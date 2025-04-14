@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Test Your Knowledge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            position: relative;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .categories {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+        
+        .category-info {
+            padding: 20px;
+        }
+        
+        .category-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .category-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .quiz-count {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .quiz-count i {
+            margin-right: 5px;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(67, 97, 238, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#" class="btn btn-outline">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Test Your Knowledge With Fun Quizzes</h1>
+            <p>Challenge yourself with thousands of quizzes across various categories. Learn, compete, and have fun!</p>
+            <div class="hero-btns">
+                <a href="#" class="btn">Start Quiz Now</a>
+                <a href="#categories" class="btn btn-outline">Browse Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Quiz Categories</h2>
+                <p>Explore our wide range of quiz categories and find your favorite topics to test your knowledge</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D12AQECErt_uiu9_A/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1709920736662?e=2147483647&v=beta&t=pTWlwfOcN1gZs0zx_RWqqXYxHrWbJTPBwmwB-cua7L8" alt="Web Development">
+                    </div>
+                    <div class="category-info">
+                        <h3>Web Development</h3>
+                        <p>It involves creating, building, and maintaining websites and web applications that can be accessed through a web browser.</p>
+                        <a href="webdevloppage.html" class="btn" style="margin-top: 15px; display: inline-block;">Start Quiz</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://cdn.prod.website-files.com/64a6f67b79a80fd9ff31ca7a/660518a82efcea03e0506ba7_android%20app%20development%20frameworks.png" alt="Android Development">
+                    </div>
+                    <div class="category-info">
+                        <h3>Android Development</h3>
+                        <p>It involves creating applications for devices running the Android operating system</p>
+                        <a href="androiddevloppage.html" class="btn" style="margin-top: 15px; display: inline-block;">Start Quiz</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://kahedu.edu.in/n/wp-content/uploads/2023/07/WhatsApp-Image-2024-02-15-at-12.24.11-PM.jpeg" alt="Data Science and AI">
+                    </div>
+                    <div class="category-info">
+                        <h3>Data Science and AI</h3>
+                        <p>Data Science is more about the process of understanding and analyzing data, while AI focuses on creating systems that can mimic human intelligence.</p>
+                        <a href="datascienceandaipage.html" class="btn" style="margin-top: 15px; display: inline-block;">Start Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose QuizMaster?</h2>
+                <p>Discover what makes our quiz platform stand out from the rest</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Competitive Leaderboards</h3>
+                    <p>Compete with others and climb the leaderboards to show off your knowledge</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Timed Challenges</h3>
+                    <p>Test your speed and accuracy with our timed quiz challenges</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Track your improvement over time with detailed statistics and analytics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Features</h3>
+                    <p>Create your own quizzes and challenge friends with our social features</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Users Say</h2>
+                <p>Don't just take our word for it - hear from our community of quiz enthusiasts</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>QuizMaster has completely changed how I learn new topics. The interactive quizzes make studying fun and engaging. I've improved my general knowledge significantly!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Chandrika Sri Priya</h4>
+                            <p>Teacher & Quiz Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>As a trivia night host, I use QuizMaster to prepare for my events. The variety of categories and question types is unmatched. My teams have won 3 championships thanks to this app!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Manogna</h4>
+                            <p>Trivia Night Host</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>I love challenging my friends on QuizMaster. The competitive elements keep us coming back every week. It's our new favorite way to stay connected and learn together.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Pranathi</h4>
+                            <p>College Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>As a lifelong learner, I appreciate how QuizMaster makes education fun. The daily challenges keep me motivated and the progress tracking shows my improvement over time.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="David Wilson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Raja</h4>
+                            <p>Retired Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>I use QuizMaster with my students to make test preparation more engaging. The ability to create custom quizzes has been a game-changer for my classroom!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Jennifer Lee">
+                        </div>
+                        <div class="author-info">
+                            <h4>Vinay</h4>
+                            <p>High School Teacher</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Challenge Yourself?</h2>
+            <p>Join thousands of users who are improving their knowledge and having fun with our quizzes</p>
+            <a href="#" class="btn">Sign Up Now - It's Free!</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Android Development</a></li>
+                        <li><a href="#">Data Science and AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> team5@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> 8019933268</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Quiz Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', revealOnScroll);
+        
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.category-card, .feature-card, .testimonial-card');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementPosition < windowHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize elements with opacity 0 for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.category-card, .feature-card, .testimonial-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+            
+            // Trigger the animation after a small delay
+            setTimeout(revealOnScroll, 100);
+        });
+    </script>
+</body>
+</html>

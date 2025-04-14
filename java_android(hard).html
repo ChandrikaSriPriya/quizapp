@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Hard Quiz | QuizMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --error-color: #f44336;
+            --warning-color: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: var(--secondary-color);
+        }
+        
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
+        }
+        
+        .quiz-header h1 {
+            font-size: 42px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .quiz-header .difficulty-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .hard-badge {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--error-color);
+        }
+        
+        .quiz-header p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            flex-grow: 1;
+            margin: 0 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .question-count {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .question-card {
+            margin-bottom: 40px;
+        }
+        
+        .question-text {
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .question-number {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .code-editor-container {
+            margin-bottom: 25px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .editor-header {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .editor-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .editor-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .run-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .run-btn:hover {
+            background-color: #3da73d;
+        }
+        
+        .reset-btn {
+            background-color: var(--error-color);
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+        
+        .code-editor {
+            width: 100%;
+            height: 300px;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            border: none;
+            resize: none;
+            outline: none;
+            tab-size: 4;
+        }
+        
+        .output-container {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+        
+        .output-title {
+            color: #569cd6;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .output-content {
+            color: #d4d4d4;
+        }
+        
+        .quiz-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .next-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .next-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .skip-btn {
+            background-color: var(--warning-color);
+            color: white;
+        }
+        
+        .skip-btn:hover {
+            background-color: #e68a00;
+        }
+        
+        .finish-btn {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .finish-btn:hover {
+            background-color: #3da73d;
+        }
+        
+        .result-container {
+            text-align: center;
+            display: none;
+        }
+        
+        .result-icon {
+            font-size: 80px;
+            color: var(--success-color);
+            margin-bottom: 20px;
+        }
+        
+        .score-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .score-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .quiz-header h1 {
+                font-size: 32px;
+            }
+            
+            .question-text {
+                font-size: 18px;
+            }
+            
+            .quiz-container {
+                padding: 20px;
+            }
+            
+            .quiz-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .code-editor {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="#" class="btn btn-outline">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="java-quizzes.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Java Quizzes
+        </a>
+        
+        <div class="quiz-header">
+            <div class="difficulty-badge hard-badge">Hard Level</div>
+            <h1>Java Programming Challenge</h1>
+            <p>Test your advanced Java skills with these programming challenges</p>
+        </div>
+        
+        <div class="quiz-container">
+            <div class="quiz-progress">
+                <span class="question-count">Question 1 of 5</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+                <span class="score">Score: 0%</span>
+            </div>
+            
+            <div class="question-card">
+                <div class="question-text">
+                    <span class="question-number">1.</span>
+                    <span class="question">Implement a thread-safe singleton class in Java.</span>
+                </div>
+                
+                <div class="code-editor-container">
+                    <div class="editor-header">
+                        <div class="editor-title">Solution.java</div>
+                        <div class="editor-actions">
+                            <button class="reset-btn">Reset</button>
+                            <button class="run-btn">Run Code</button>
+                        </div>
+                    </div>
+                    <textarea class="code-editor" spellcheck="false">public class Singleton {
+    // Write your thread-safe singleton implementation here
+    
+    
+    public static void main(String[] args) {
+        // Test your implementation here
+    }
+}</textarea>
+                </div>
+                
+                <div class="output-container">
+                    <div class="output-title">Output:</div>
+                    <div class="output-content">Your program output will appear here</div>
+                </div>
+            </div>
+            
+            <div class="quiz-footer">
+                <button class="btn skip-btn">Skip Question</button>
+                <button class="btn next-btn">Next Question</button>
+            </div>
+        </div>
+        
+        <div class="quiz-container result-container">
+            <div class="result-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2>Quiz Completed!</h2>
+            <div class="score-text">Your Score:</div>
+            <div class="score-value">0%</div>
+            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">5</span> questions correctly</p>
+            
+            <div class="quiz-footer" style="justify-content: center;">
+                <button id="try-again-btn" class="btn" style="margin-right: 15px;">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+                <a href="java-quizzes.html" class="btn">
+                    <i class="fas fa-list"></i> Back to Quizzes
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Java Development</h3>
+                    <ul class="footer-links">
+                        <li><a href="java-easy-quiz.html">Java Basics</a></li>
+                        <li><a href="java-oop-quiz.html">OOP Concepts</a></li>
+                        <li><a href="java-collections-quiz.html">Collections</a></li>
+                        <li><a href="java-exceptions-quiz.html">Exceptions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@quizmaster.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Quiz Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz questions data
+        const questions = [
+            {
+                question: "Implement a thread-safe singleton class in Java.",
+                starterCode: `public class Singleton {
+    // Write your thread-safe singleton implementation here
+    
+    
+    public static void main(String[] args) {
+        // Test your implementation here
+    }
+}`,
+                solution: `public class Singleton {
+    private static volatile Singleton instance;
+    
+    private Singleton() {}
+    
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+    
+    public static void main(String[] args) {
+        Singleton s1 = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+        System.out.println("Are both instances the same? " + (s1 == s2));
+    }
+}`,
+                expectedOutput: "Are both instances the same? true"
+            },
+            {
+                question: "Implement a producer-consumer pattern using wait() and notify() in Java.",
+                starterCode: `import java.util.LinkedList;
+import java.util.Queue;
+
+public class ProducerConsumer {
+    // Implement the producer-consumer pattern here
+    
+    
+    public static void main(String[] args) {
+        // Test your implementation here
+    }
+}`,
+                solution: `import java.util.LinkedList;
+import java.util.Queue;
+
+public class ProducerConsumer {
+    private final Queue<Integer> queue = new LinkedList<>();
+    private final int CAPACITY = 5;
+    
+    public void produce() throws InterruptedException {
+        int value = 0;
+        while (true) {
+            synchronized (this) {
+                while (queue.size() == CAPACITY) {
+                    wait();
+                }
+                System.out.println("Produced: " + value);
+                queue.add(value++);
+                notify();
+                Thread.sleep(1000);
+            }
+        }
+    }
+    
+    public void consume() throws InterruptedException {
+        while (true) {
+            synchronized (this) {
+                while (queue.isEmpty()) {
+                    wait();
+                }
+                int value = queue.poll();
+                System.out.println("Consumed: " + value);
+                notify();
+                Thread.sleep(1000);
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        ProducerConsumer pc = new ProducerConsumer();
+        
+        Thread producer = new Thread(() -> {
+            try {
+                pc.produce();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        
+        Thread consumer = new Thread(() -> {
+            try {
+                pc.consume();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        
+        producer.start();
+        consumer.start();
+    }
+}`,
+                expectedOutput: "Produced and consumed messages alternating with 1 second delay"
+            },
+            {
+                question: "Implement a custom immutable class in Java with proper validation.",
+                starterCode: `public final class ImmutablePerson {
+    // Implement your immutable class here
+    
+    
+    public static void main(String[] args) {
+        // Test your implementation here
+    }
+}`,
+                solution: `public final class ImmutablePerson {
+    private final String name;
+    private final int age;
+    private final String email;
+    
+    public ImmutablePerson(String name, int age, String email) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        if (age <= 0) {
+            throw new IllegalArgumentException("Age must be positive");
+        }
+        if (email == null || !email.contains("@")) {
+            throw new IllegalArgumentException("Invalid email address");
+        }
+        
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    @Override
+    public String toString() {
+        return "ImmutablePerson{name='" + name + "', age=" + age + ", email='" + email + "'}";
+    }
+    
+    public static void main(String[] args) {
+        ImmutablePerson person = new ImmutablePerson("John Doe", 30, "john@example.com");
+        System.out.println(person);
+        
+        try {
+            ImmutablePerson invalid = new ImmutablePerson("", -5, "invalid");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Validation error: " + e.getMessage());
+        }
+    }
+}`,
+                expectedOutput: `ImmutablePerson{name='John Doe', age=30, email='john@example.com'}
+Validation error: Name cannot be null or empty`
+            },
+            {
+                question: "Implement a generic method to sort a list of objects using a custom comparator.",
+                starterCode: `import java.util.List;
+import java.util.Comparator;
+
+public class GenericSorter {
+    // Implement your generic sort method here
+    
+    
+    public static void main(String[] args) {
+        // Test your implementation here
+    }
+}`,
+                solution: `import java.util.List;
+import java.util.Comparator;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class GenericSorter {
+    public static <T> void sortList(List<T> list, Comparator<? super T> comparator) {
+        Collections.sort(list, comparator);
+    }
+    
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("John", "Alice", "Bob", "Zoe", "Mike");
+        System.out.println("Before sorting: " + names);
+        
+        sortList(names, (a, b) -> a.compareTo(b));
+        System.out.println("Sorted alphabetically: " + names);
+        
+        sortList(names, (a, b) -> Integer.compare(a.length(), b.length()));
+        System.out.println("Sorted by length: " + names);
+        
+        List<Integer> numbers = Arrays.asList(5, 2, 9, 1, 5);
+        System.out.println("Before sorting: " + numbers);
+        
+        sortList(numbers, (a, b) -> a - b);
+        System.out.println("Sorted numerically: " + numbers);
+    }
+}`,
+                expectedOutput: `Before sorting: [John, Alice, Bob, Zoe, Mike]
+Sorted alphabetically: [Alice, Bob, John, Mike, Zoe]
+Sorted by length: [Bob, Zoe, John, Mike, Alice]
+Before sorting: [5, 2, 9, 1, 5]
+Sorted numerically: [1, 2, 5, 5, 9]`
+            },
+            {
+                question: "Implement a recursive method to solve the Tower of Hanoi problem.",
+                starterCode: `public class TowerOfHanoi {
+    // Implement your recursive solution here
+    
+    
+    public static void main(String[] args) {
+        // Test your implementation here
+    }
+}`,
+                solution: `public class TowerOfHanoi {
+    public static void solve(int disks, char source, char destination, char auxiliary) {
+        if (disks == 1) {
+            System.out.println("Move disk 1 from " + source + " to " + destination);
+            return;
+        }
+        solve(disks - 1, source, auxiliary, destination);
+        System.out.println("Move disk " + disks + " from " + source + " to " + destination);
+        solve(disks - 1, auxiliary, destination, source);
+    }
+    
+    public static void main(String[] args) {
+        int numberOfDisks = 3;
+        System.out.println("Solution for " + numberOfDisks + " disks:");
+        solve(numberOfDisks, 'A', 'C', 'B');
+    }
+}`,
+                expectedOutput: `Solution for 3 disks:
+Move disk 1 from A to C
+Move disk 2 from A to B
+Move disk 1 from C to B
+Move disk 3 from A to C
+Move disk 1 from B to A
+Move disk 2 from B to C
+Move disk 1 from A to C`
+            }
+        ];
+
+        // DOM elements
+        const quizContainer = document.querySelector('.quiz-container');
+        const resultContainer = document.querySelector('.result-container');
+        const questionElement = document.querySelector('.question');
+        const questionNumberElement = document.querySelector('.question-number');
+        const questionCountElement = document.querySelector('.question-count');
+        const progressFillElement = document.querySelector('.progress-fill');
+        const scoreElement = document.querySelector('.score');
+        const nextButton = document.querySelector('.next-btn');
+        const skipButton = document.querySelector('.skip-btn');
+        const codeEditor = document.querySelector('.code-editor');
+        const runButton = document.querySelector('.run-btn');
+        const resetButton = document.querySelector('.reset-btn');
+        const outputContent = document.querySelector('.output-content');
+        const resultScoreElement = document.querySelector('.score-value');
+        const correctAnswersElement = document.querySelector('.correct-answers');
+        const totalQuestionsElement = document.querySelector('.total-questions');
+        const tryAgainBtn = document.getElementById('try-again-btn');
+
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = Array(questions.length).fill(null);
+        let skippedQuestions = [];
+
+        // Initialize quiz
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.textContent = currentQuestion.question;
+            questionNumberElement.textContent = currentQuestionIndex + 1;
+            questionCountElement.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            progressFillElement.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            
+            // Load starter code or previously entered code
+            codeEditor.value = userAnswers[currentQuestionIndex] || currentQuestion.starterCode;
+            outputContent.textContent = "Your program output will appear here";
+            
+            // Update button text for last question
+            nextButton.textContent = currentQuestionIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question';
+        }
+
+        // Run the Java code (simulated)
+        function runCode() {
+            const currentQuestion = questions[currentQuestionIndex];
+            const userCode = codeEditor.value;
+            userAnswers[currentQuestionIndex] = userCode;
+            
+            try {
+                // In a real implementation, you would send this to a server-side compiler
+                // For this demo, we'll just compare with the solution
+                if (userCode.includes(currentQuestion.solution.trim().replace(/\s+/g, ' '))) {
+                    outputContent.textContent = currentQuestion.expectedOutput;
+                    outputContent.innerHTML += "\n\n✅ Correct! Your solution matches the expected implementation.";
+                } else {
+                    outputContent.textContent = "Your code ran successfully, but may not fully solve the problem.\n\nExpected output:\n" + 
+                                              currentQuestion.expectedOutput + 
+                                              "\n\nCompare your solution with the requirements.";
+                }
+            } catch (error) {
+                outputContent.textContent = "Error: " + error.message;
+            }
+        }
+
+        // Reset the code editor
+        function resetCode() {
+            codeEditor.value = questions[currentQuestionIndex].starterCode;
+            outputContent.textContent = "Your program output will appear here";
+        }
+
+        // Check if current question is answered
+        function isQuestionAnswered() {
+            const userCode = codeEditor.value.trim();
+            const starterCode = questions[currentQuestionIndex].starterCode.trim();
+            return userCode !== starterCode;
+        }
+
+        // Handle next button click
+        function goToNextQuestion() {
+            // Save current answer
+            userAnswers[currentQuestionIndex] = codeEditor.value;
+            
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Handle skip button click
+        function skipQuestion() {
+            skippedQuestions.push(currentQuestionIndex + 1);
+            goToNextQuestion();
+        }
+
+        // Show quiz results
+        function showResults() {
+            // Calculate score by comparing with solutions (simplified for demo)
+            score = 0;
+            for (let i = 0; i < questions.length; i++) {
+                if (userAnswers[i] && userAnswers[i].includes(questions[i].solution.trim().replace(/\s+/g, ' '))) {
+                    score++;
+                }
+            }
+            
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            resultScoreElement.textContent = `${percentage}%`;
+            correctAnswersElement.textContent = score;
+            totalQuestionsElement.textContent = questions.length;
+            
+            // Show skipped questions if any
+            if (skippedQuestions.length > 0) {
+                const skippedElement = document.createElement('p');
+                skippedElement.innerHTML = `<br><i class="fas fa-info-circle"></i> You skipped questions: ${skippedQuestions.join(', ')}`;
+                resultContainer.querySelector('p').after(skippedElement);
+            }
+        }
+
+        // Reset quiz to initial state
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = Array(questions.length).fill(null);
+            skippedQuestions = [];
+            
+            // Reset UI elements
+            scoreElement.textContent = "Score: 0%";
+            resultContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+            
+            // Reload first question
+            loadQuestion();
+        }
+
+        // Event listeners
+        runButton.addEventListener('click', runCode);
+        resetButton.addEventListener('click', resetCode);
+        nextButton.addEventListener('click', goToNextQuestion);
+        skipButton.addEventListener('click', skipQuestion);
+        tryAgainBtn.addEventListener('click', resetQuiz);
+
+        // Start the quiz
+        loadQuestion();
+
+        // Simple code editor improvements
+        codeEditor.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                
+                // Insert tab character
+                this.value = this.value.substring(0, start) + '    ' + this.value.substring(end);
+                
+                // Move cursor position
+                this.selectionStart = this.selectionEnd = start + 4;
+            }
+        });
+    </script>
+</body>
+</html>

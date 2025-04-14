@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Quizzes | QuizMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --easy-color: #4caf50;
+            --medium-color: #ff9800;
+            --hard-color: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: var(--secondary-color);
+        }
+        
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
+        }
+        
+        .quiz-header h1 {
+            font-size: 42px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .quiz-header p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .language-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .language-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .language-card:hover::before {
+            opacity: 1;
+        }
+        
+        .language-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 36px;
+        }
+        
+        .language-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .language-card p {
+            color: #666;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+        
+        .difficulty-levels {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+            display: none;
+        }
+        
+        .difficulty-levels h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        .difficulty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .difficulty-card {
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .difficulty-card.easy {
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 2px solid var(--easy-color);
+        }
+        
+        .difficulty-card.medium {
+            background-color: rgba(255, 152, 0, 0.1);
+            border: 2px solid var(--medium-color);
+        }
+        
+        .difficulty-card.hard {
+            background-color: rgba(244, 67, 54, 0.1);
+            border: 2px solid var(--hard-color);
+        }
+        
+        .difficulty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .difficulty-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .difficulty-card.easy .difficulty-icon {
+            color: var(--easy-color);
+        }
+        
+        .difficulty-card.medium .difficulty-icon {
+            color: var(--medium-color);
+        }
+        
+        .difficulty-card.hard .difficulty-icon {
+            color: var(--hard-color);
+        }
+        
+        .difficulty-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .difficulty-card.easy h3 {
+            color: var(--easy-color);
+        }
+        
+        .difficulty-card.medium h3 {
+            color: var(--medium-color);
+        }
+        
+        .difficulty-card.hard h3 {
+            color: var(--hard-color);
+        }
+        
+        .difficulty-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .start-quiz-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .difficulty-card.easy .start-quiz-btn {
+            background-color: var(--easy-color);
+            color: white;
+        }
+        
+        .difficulty-card.medium .start-quiz-btn {
+            background-color: var(--medium-color);
+            color: white;
+        }
+        
+        .difficulty-card.hard .start-quiz-btn {
+            background-color: var(--hard-color);
+            color: white;
+        }
+        
+        .start-quiz-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .quiz-header h1 {
+                font-size: 32px;
+            }
+            
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .difficulty-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="#" class="btn btn-outline">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Categories
+        </a>
+        
+        <div class="quiz-header">
+            <h1>Data Science Quizzes</h1>
+            <p>Test your knowledge of data science concepts, tools, and technologies. Select a topic to begin your quiz journey.</p>
+        </div>
+        
+        <div class="language-grid">
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python</h3>
+                <p>The most popular programming language for data science and machine learning.</p>
+                <a href="#python-quiz" class="btn">Select Python</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>SQL</h3>
+                <p>Standard language for managing and querying relational databases.</p>
+                <a href="#sql-quiz" class="btn">Select SQL</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>R Programming</h3>
+                <p>Statistical computing and graphics language popular among data scientists.</p>
+                <a href="#r-quiz" class="btn">Select R</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Power BI</h3>
+                <p>Business analytics service by Microsoft for interactive visualizations.</p>
+                <a href="#powerbi-quiz" class="btn">Select Power BI</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h3>NumPy</h3>
+                <p>Fundamental package for scientific computing with Python.</p>
+                <a href="#numpy-quiz" class="btn">Select NumPy</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-table"></i>
+                </div>
+                <h3>Pandas</h3>
+                <p>Powerful data manipulation and analysis library for Python.</p>
+                <a href="#pandas-quiz" class="btn">Select Pandas</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Matplotlib</h3>
+                <p>Comprehensive library for creating static, animated, and interactive visualizations.</p>
+                <a href="#matplotlib-quiz" class="btn">Select Matplotlib</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-chart-area"></i>
+                </div>
+                <h3>Tableau</h3>
+                <p>Powerful data visualization tool for business intelligence.</p>
+                <a href="#tableau-quiz" class="btn">Select Tableau</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Machine Learning</h3>
+                <p>Algorithms and statistical models that enable systems to improve automatically.</p>
+                <a href="#ml-quiz" class="btn">Select ML</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Deep Learning</h3>
+                <p>Subset of ML using neural networks with multiple abstraction layers.</p>
+                <a href="#dl-quiz" class="btn">Select Deep Learning</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3>NLP</h3>
+                <p>Natural Language Processing for interactions between computers and human language.</p>
+                <a href="#nlp-quiz" class="btn">Select NLP</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fas fa-ai"></i>
+                </div>
+                <h3>LLMs</h3>
+                <p>Large Language Models like GPT that understand and generate human-like text.</p>
+                <a href="#llm-quiz" class="btn">Select LLMs</a>
+            </div>
+        </div>
+        
+        <!-- Python Quiz Difficulty Levels -->
+        <div id="python-quiz" class="difficulty-levels">
+            <h2>Python for Data Science - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic Python syntax, data types, and simple operations.</p>
+                    <a href="python-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Functions, list comprehensions, and basic file operations.</p>
+                    <a href="python-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Decorators, generators, and advanced OOP concepts.</p>
+                    <a href="python-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SQL Quiz Difficulty Levels -->
+        <div id="sql-quiz" class="difficulty-levels">
+            <h2>SQL Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic SELECT statements, WHERE clauses, and simple joins.</p>
+                    <a href="sql-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Complex joins, subqueries, and aggregate functions.</p>
+                    <a href="sql-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Window functions, CTEs, and query optimization.</p>
+                    <a href="sql-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- R Quiz Difficulty Levels -->
+        <div id="r-quiz" class="difficulty-levels">
+            <h2>R Programming Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic R syntax, vectors, and simple data frames.</p>
+                    <a href="r-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Data manipulation with dplyr and basic visualizations.</p>
+                    <a href="r-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced statistical modeling and custom functions.</p>
+                    <a href="r-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Power BI Quiz Difficulty Levels -->
+        <div id="powerbi-quiz" class="difficulty-levels">
+            <h2>Power BI Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic dashboard creation and simple visualizations.</p>
+                    <a href="powerbi-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>DAX formulas and intermediate data modeling.</p>
+                    <a href="powerbi-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced Power Query and performance optimization.</p>
+                    <a href="powerbi-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NumPy Quiz Difficulty Levels -->
+        <div id="numpy-quiz" class="difficulty-levels">
+            <h2>NumPy Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic array operations and simple mathematical functions.</p>
+                    <a href="numpy-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Array manipulation and broadcasting.</p>
+                    <a href="numpy-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced indexing and performance optimization.</p>
+                    <a href="numpy-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pandas Quiz Difficulty Levels -->
+        <div id="pandas-quiz" class="difficulty-levels">
+            <h2>Pandas Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic DataFrame operations and simple filtering.</p>
+                    <a href="pandas-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>GroupBy operations and data cleaning techniques.</p>
+                    <a href="pandas-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Multi-indexing and performance optimization.</p>
+                    <a href="pandas-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Matplotlib Quiz Difficulty Levels -->
+        <div id="matplotlib-quiz" class="difficulty-levels">
+            <h2>Matplotlib Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic line plots and simple customizations.</p>
+                    <a href="matplotlib-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Subplots and intermediate visualizations.</p>
+                    <a href="matplotlib-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced customizations and interactive plots.</p>
+                    <a href="matplotlib-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tableau Quiz Difficulty Levels -->
+        <div id="tableau-quiz" class="difficulty-levels">
+            <h2>Tableau Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic dashboard creation and simple calculations.</p>
+                    <a href="tableau-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Parameters and intermediate LOD expressions.</p>
+                    <a href="tableau-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced calculations and performance optimization.</p>
+                    <a href="tableau-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Machine Learning Quiz Difficulty Levels -->
+        <div id="ml-quiz" class="difficulty-levels">
+            <h2>Machine Learning Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic concepts and simple algorithms.</p>
+                    <a href="ml-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Model evaluation and feature engineering.</p>
+                    <a href="ml-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Ensemble methods and hyperparameter tuning.</p>
+                    <a href="ml-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Deep Learning Quiz Difficulty Levels -->
+        <div id="dl-quiz" class="difficulty-levels">
+            <h2>Deep Learning Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic neural network concepts.</p>
+                    <a href="dl-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>CNN architectures and training techniques.</p>
+                    <a href="dl-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced architectures and optimization.</p>
+                    <a href="dl-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NLP Quiz Difficulty Levels -->
+        <div id="nlp-quiz" class="difficulty-levels">
+            <h2>NLP Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic text processing and simple models.</p>
+                    <a href="nlp-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Word embeddings and sequence models.</p>
+                    <a href="nlp-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Transformer architectures and advanced techniques.</p>
+                    <a href="nlp-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- LLM Quiz Difficulty Levels -->
+        <div id="llm-quiz" class="difficulty-levels">
+            <h2>Large Language Models Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic concepts and applications of LLMs.</p>
+                    <a href="llm-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Transformer architecture and fine-tuning.</p>
+                    <a href="llm-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced training techniques and optimization.</p>
+                    <a href="llm-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Data Science</h3>
+                    <ul class="footer-links">
+                        <li><a href="#python-quiz">Python Quizzes</a></li>
+                        <li><a href="#sql-quiz">SQL Quizzes</a></li>
+                        <li><a href="#r-quiz">R Quizzes</a></li>
+                        <li><a href="#ml-quiz">Machine Learning</a></li>
+                        <li><a href="#dl-quiz">Deep Learning</a></li>
+                        <li><a href="#nlp-quiz">NLP Quizzes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@quizmaster.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Quiz Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Show only the selected quiz difficulty section
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all difficulty sections initially
+            const difficultySections = document.querySelectorAll('.difficulty-levels');
+            difficultySections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show section when language is selected
+            const languageLinks = document.querySelectorAll('.language-card a');
+            languageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    // Hide all sections
+                    difficultySections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show selected section
+                    document.querySelector(targetId).style.display = 'block';
+                    
+                    // Scroll to the section
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // If URL has hash, show that section
+            if(window.location.hash) {
+                const targetSection = document.querySelector(window.location.hash);
+                if(targetSection && targetSection.classList.contains('difficulty-levels')) {
+                    targetSection.style.display = 'block';
+                    setTimeout(() => {
+                        targetSection.scrollIntoView();
+                    }, 100);
+                }
+            }
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', revealOnScroll);
+        
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.language-card');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementPosition < windowHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize elements with opacity 0 for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.language-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+            
+            // Trigger the animation after a small delay
+            setTimeout(revealOnScroll, 100);
+        });
+    </script>
+</body>
+</html>
+
+data science

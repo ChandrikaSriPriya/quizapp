@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+        
+        .login-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo i {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .logo h2 {
+            font-size: 28px;
+            color: var(--dark-color);
+        }
+        
+        .login-form .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .login-form .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .login-form .form-group input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .login-form .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+        
+        .login-form .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: #777;
+            font-size: 18px;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .social-login {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .social-login::before,
+        .social-login::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .social-login::before {
+            left: 0;
+        }
+        
+        .social-login::after {
+            right: 0;
+        }
+        
+        .social-login p {
+            display: inline-block;
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+            color: #777;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .google {
+            background-color: #db4437;
+        }
+        
+        .register-link {
+            text-align: center;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        @media (max-width: 576px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .social-login::before,
+            .social-login::after {
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <h2>QuizMaster</h2>
+        </div>
+        
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+            </div>
+            
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">Login</button>
+            
+            <div class="social-login">
+                <p>Or login with</p>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+            </div>
+            
+            <div class="register-link">
+                <p>Don't have an account? <a href="homepage.html" id="registerLink">Register here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const registerLink = document.getElementById('registerLink');
+            
+            // Form validation
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Email validation
+                if (!emailInput.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    emailInput.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    emailError.style.display = 'none';
+                    emailInput.style.borderColor = '#e0e0e0';
+                }
+                
+                // Password validation
+                if (!passwordInput.value || passwordInput.value.length < 6) {
+                    passwordError.style.display = 'block';
+                    passwordInput.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    passwordError.style.display = 'none';
+                    passwordInput.style.borderColor = '#e0e0e0';
+                }
+                
+                // If form is valid, proceed with login
+                if (isValid) {
+                    // In a real application, you would send this data to your server
+                    const userData = {
+                        email: emailInput.value,
+                        password: passwordInput.value,
+                        remember: document.getElementById('remember').checked
+                    };
+                    
+                    // Simulate login success
+                    simulateLogin(userData);
+                }
+            });
+            
+            // Register link - would normally link to registration page
+            registerLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Registration page would open here. For this demo, you can use any email and password (minimum 6 characters).');
+            });
+            
+            // Simulate login function
+            function simulateLogin(userData) {
+                // Show loading state
+                const submitBtn = loginForm.querySelector('.btn');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call delay
+                setTimeout(function() {
+                    // Store user data in localStorage (for demo purposes)
+                    localStorage.setItem('quizMasterUser', JSON.stringify({
+                        email: userData.email,
+                        loggedIn: true,
+                        timestamp: new Date().getTime()
+                    }));
+                    
+                    // Redirect to home page after successful login
+                    window.location.href = 'index.html'; // Replace with your home page URL
+                }, 1500);
+            }
+            
+            // Check if user is already logged in (for demo purposes)
+            const storedUser = localStorage.getItem('quizMasterUser');
+            if (storedUser) {
+                const user = JSON.parse(storedUser);
+                if (user.loggedIn) {
+                    // User is already logged in, redirect to home page
+                    window.location.href = 'index.html'; // Replace with your home page URL
+                }
+            }
+        });
+    </script>
+</body>
+</html>
