@@ -341,21 +341,21 @@
         footer {
             background-color: var(--dark-color);
             color: white;
-            padding: 50px 0 20px;
+            padding: 15px 0 5px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
         .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 14px;
+            margin-bottom: 8px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 3px;
         }
         
         .footer-column h3::after {
@@ -363,59 +363,45 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 50px;
-            height: 2px;
+            width: 25px;
+            height: 1px;
             background-color: var(--accent-color);
         }
         
         .footer-links {
             list-style: none;
+            padding-left: 0;
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 3px;
         }
         
         .footer-links a {
             color: #aaa;
             text-decoration: none;
             transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
+            font-size: 12px;
         }
         
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 5px;
+            margin-top: 8px;
         }
         
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 8px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
-            font-size: 14px;
+            font-size: 11px;
         }
         
         @media (max-width: 768px) {
@@ -446,18 +432,18 @@
                     <span>QuizMaster</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#categories">Categories</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#testimonials">Testimonials</a></li>
-                    <li><a href="#" class="btn btn-outline">Login</a></li>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="homepage.html#categories">Categories</a></li>
+                    <li><a href="homepage.html#features">Features</a></li>
+                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                    
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <a href="index.html" class="back-btn">
+        <a href="homepage.html" class="back-btn">
             <i class="fas fa-arrow-left"></i>
             Back to Categories
         </a>
@@ -533,7 +519,7 @@
                     </div>
                     <h3>Easy</h3>
                     <p>Basic HTML elements, tags, and attributes. Perfect for beginners.</p>
-                    <a href="html-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="html_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -542,7 +528,7 @@
                     </div>
                     <h3>Medium</h3>
                     <p>Forms, semantic HTML, and accessibility. For intermediate developers.</p>
-                    <a href="html-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="html_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -551,7 +537,8 @@
                     </div>
                     <h3>Hard</h3>
                     <p>Advanced concepts like web components and performance optimization.</p>
-                    <a href="html-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="html_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
+
                 </div>
             </div>
         </div>
@@ -566,7 +553,7 @@
                     </div>
                     <h3>Easy</h3>
                     <p>Basic selectors, properties, and values. Great for CSS beginners.</p>
-                    <a href="css-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="css_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -575,7 +562,7 @@
                     </div>
                     <h3>Medium</h3>
                     <p>Flexbox, Grid, and responsive design principles.</p>
-                    <a href="css-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="css_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -584,7 +571,7 @@
                     </div>
                     <h3>Hard</h3>
                     <p>Advanced animations, transforms, and CSS architecture.</p>
-                    <a href="css-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="css_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -599,7 +586,7 @@
                     </div>
                     <h3>Easy</h3>
                     <p>Basic syntax, variables, and simple functions.</p>
-                    <a href="js-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="javascript_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -608,7 +595,7 @@
                     </div>
                     <h3>Medium</h3>
                     <p>DOM manipulation, events, and ES6 features.</p>
-                    <a href="js-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="javasript_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -617,7 +604,7 @@
                     </div>
                     <h3>Hard</h3>
                     <p>Closures, prototypes, promises, and advanced patterns.</p>
-                    <a href="js-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="javascript_webdevlop(hard).htmll" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -632,7 +619,7 @@
                     </div>
                     <h3>Easy</h3>
                     <p>Basic components, props, and state management.</p>
-                    <a href="react-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="react_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -641,7 +628,7 @@
                     </div>
                     <h3>Medium</h3>
                     <p>Hooks, context API, and component lifecycle.</p>
-                    <a href="react-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="react_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -650,7 +637,7 @@
                     </div>
                     <h3>Hard</h3>
                     <p>Advanced state management, performance optimization, and custom hooks.</p>
-                    <a href="react-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="react_webdevlop(hard).htmll" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -665,7 +652,7 @@
                     </div>
                     <h3>Easy</h3>
                     <p>Basic components, directives, and data binding.</p>
-                    <a href="angular-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="angular_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -674,7 +661,7 @@
                     </div>
                     <h3>Medium</h3>
                     <p>Services, dependency injection, and routing.</p>
-                    <a href="angular-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="angular_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -683,7 +670,7 @@
                     </div>
                     <h3>Hard</h3>
                     <p>Advanced RxJS, state management, and performance optimization.</p>
-                    <a href="angular-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="angular_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -698,7 +685,7 @@
                     </div>
                     <h3>Easy</h3>
                     <p>Basic Node.js concepts, modules, and file system operations.</p>
-                    <a href="node-easy-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="node_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -707,7 +694,7 @@
                     </div>
                     <h3>Medium</h3>
                     <p>Express.js, middleware, and basic API development.</p>
-                    <a href="node-medium-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="node_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -716,7 +703,7 @@
                     </div>
                     <h3>Hard</h3>
                     <p>Advanced authentication, database integration, and performance tuning.</p>
-                    <a href="node-hard-quiz.html" class="start-quiz-btn">Start Quiz</a>
+                    <a href="node_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -738,10 +725,10 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#categories">Categories</a></li>
-                        <li><a href="index.html#features">Features</a></li>
-                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="homepage.html#categories">Categories</a></li>
+                        <li><a href="homepage.html#features">Features</a></li>
+                        <li><a href="homepage.html#testimonials">Testimonials</a></li>
                         <li><a href="#">About Us</a></li>
                     </ul>
                 </div>

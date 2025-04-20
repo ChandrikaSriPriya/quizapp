@@ -1,0 +1,343 @@
+<script>
+  // Data Science questions with difficulty levels and categories
+  const questions = [
+    {
+      title: "Data Cleaning and Preprocessing",
+      description: "Write a function to clean and preprocess a dataset by handling missing values and encoding categorical variables.",
+      answer: `import pandas as pd
+
+def clean_and_preprocess(df):
+    # Handle missing values
+    df.fillna(df.mean(), inplace=True)
+
+    # Encode categorical variables
+    df = pd.get_dummies(df, drop_first=True)
+
+    return df
+`,
+      hint: "Use pandas to handle missing values and encode categorical variables.",
+      difficulty: "medium",
+      category: "Data Cleaning"
+    },
+    {
+      title: "Exploratory Data Analysis (EDA)",
+      description: "Write a function to perform exploratory data analysis on a dataset and generate summary statistics and visualizations.",
+      answer: `import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def perform_eda(df):
+    # Summary statistics
+    print(df.describe())
+
+    # Visualizations
+    sns.pairplot(df)
+    plt.show()
+
+    sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+    plt.show()
+`,
+      hint: "Use pandas for summary statistics and seaborn for visualizations.",
+      difficulty: "medium",
+      category: "EDA"
+    },
+    {
+      title: "Feature Engineering",
+      description: "Write a function to create new features from existing data to improve the performance of a machine learning model.",
+      answer: `import pandas as pd
+
+def feature_engineering(df):
+    # Create new features
+    df['new_feature'] = df['feature1'] * df['feature2']
+    df['another_feature'] = df['feature3'] / df['feature4']
+
+    return df
+`,
+      hint: "Create new features by combining or transforming existing features.",
+      difficulty: "medium",
+      category: "Feature Engineering"
+    },
+    {
+      title: "Model Training and Evaluation",
+      description: "Write a function to train a machine learning model and evaluate its performance using appropriate metrics.",
+      answer: `from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+def train_and_evaluate(X, y):
+    # Split the data
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Train the model
+    model = RandomForestClassifier()
+    model.fit(X_train, y_train)
+
+    # Evaluate the model
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    conf_matrix = confusion_matrix(y_test, y_pred)
+
+    print(f"Accuracy: {accuracy}")
+    print("Confusion Matrix:")
+    print(conf_matrix)
+`,
+      hint: "Use scikit-learn to split the data, train the model, and evaluate its performance.",
+      difficulty: "medium",
+      category: "Model Training"
+    },
+    {
+      title: "Hyperparameter Tuning",
+      description: "Write a function to perform hyperparameter tuning using grid search or random search to find the best parameters for a machine learning model.",
+      answer: `from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+
+def hyperparameter_tuning(X, y):
+    # Define the parameter grid
+    param_grid = {
+        'n_estimators': [100, 200, 300],
+        'max_depth': [None, 10, 20, 30],
+        'min_samples_split': [2, 5, 10]
+    }
+
+    # Initialize the model
+    model = RandomForestClassifier()
+
+    # Perform grid search
+    grid_search = GridSearchCV(model, param_grid, cv=5, scoring='accuracy')
+    grid_search.fit(X, y)
+
+    # Get the best parameters
+    best_params = grid_search.best_params_
+    print(f"Best Parameters: {best_params}")
+
+    return best_params
+`,
+      hint: "Use GridSearchCV from scikit-learn to perform hyperparameter tuning.",
+      difficulty: "medium",
+      category: "Hyperparameter Tuning"
+    }
+  ];
+
+  // Update the placeholder text in the editor to mention Python
+  document.getElementById("javaCode").placeholder = "# Write your Python code here";
+  // User data and state
+    let current = 0;
+    let timer;
+    let timeLeft = 180; // 3 minutes
+    let score = 0;
+    let hintsUsed = 0;
+    let solutionsViewed = 0;
+    let perfectQuestions = [];
+    let startTime = new Date();
+
+    // Initialize the app
+    function init() {
+      // Set random user avatar color
+      const colors = ['#4cc9f0', '#4361ee', '#3f37c9', '#f72585', '#7209b7'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.getElementById('userAvatar').style.background = randomColor;
+
+      // Set first question
+      startQuestion();
+
+      // Add keyboard shortcuts
+      document.addEventListener('keydown', handleKeyboardShortcuts);
+    }
+
+    // Handle keyboard shortcuts
+    function handleKeyboardShortcuts(event) {
+      if (event.ctrlKey) {
+        if (event.key === 'Enter') {
+          checkCode();
+        } else if (event.key === 'h') {
+          showHint();
+        } else if (event.key === 's') {
+          showSolution();
+        }
+      }
+    }
+
+    // Start a new question
+    function startQuestion() {
+      const q = questions[current];
+      document.getElementById("questionTitle").textContent = q.title;
+      document.getElementById("questionText").textContent = q.description;
+      document.querySelector(".question-counter").textContent = `Question ${current + 1} of ${questions.length}`;
+
+      // Set starter code with question as comment
+      document.getElementById("javaCode").value = `# ${q.description}\n`;
+
+      document.getElementById("result").textContent = "";
+      document.getElementById("result").className = "";
+      timeLeft = 180;
+      updateTimer();
+
+      // Reset timer styling
+      document.getElementById('timerContainer').className = 'timer-container';
+
+      if (timer) clearInterval(timer);
+      timer = setInterval(updateTimer, 1000);
+    }
+
+    // Update timer display
+    function updateTimer() {
+      let min = Math.floor(timeLeft / 60);
+      let sec = timeLeft % 60;
+      document.getElementById("timer").textContent = `${min}:${sec < 10 ? "0" : ""}${sec}`;
+
+      // Update timer styling based on remaining time
+      const timerElement = document.getElementById('timerContainer');
+      if (timeLeft <= 30 && timeLeft > 10) {
+        timerElement.classList.add('warning');
+        timerElement.classList.remove('danger');
+      } else if (timeLeft <= 10) {
+        timerElement.classList.remove('warning');
+        timerElement.classList.add('danger');
+      } else {
+        timerElement.className = 'timer-container';
+      }
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        const resultBox = document.getElementById("result");
+        resultBox.className = "time-up";
+        resultBox.innerHTML = "<i class='fas fa-clock'></i> Time's up!\n\nCorrect answer:\n\n" + questions[current].answer;
+        setTimeout(() => {
+          nextQuestion();
+        }, 3000);
+      }
+      timeLeft--;
+    }
+
+    // Show hint for current question
+    function showHint() {
+      const resultBox = document.getElementById("result");
+      resultBox.className = "hint";
+      resultBox.innerHTML = "<i class='fas fa-lightbulb'></i> Hint:\n\n" + questions[current].hint;
+      hintsUsed++;
+
+      // Animate the hint button
+      const hintBtn = document.querySelector('.btn-hint');
+      hintBtn.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        hintBtn.style.transform = '';
+      }, 300);
+    }
+
+    // Check user's code against solution
+    function checkCode() {
+      const userCode = document.getElementById("javaCode").value.trim();
+      const correctCode = questions[current].answer.trim();
+      const resultBox = document.getElementById("result");
+
+      clearInterval(timer);
+
+      if (userCode === correctCode) {
+        resultBox.className = "success";
+        resultBox.innerHTML = "<i class='fas fa-check-circle'></i> Your solution was correct!";
+        score++;
+
+        // Add to perfect questions if solved without hints/solutions
+        if (hintsUsed === 0 && solutionsViewed === 0) {
+          perfectQuestions.push(current);
+        }
+      } else {
+        resultBox.className = "error";
+        resultBox.innerHTML = "<i class='fas fa-times-circle'></i> Incorrect solution.\n\nCorrect answer:\n\n" + correctCode;
+      }
+
+      setTimeout(() => {
+        nextQuestion();
+      }, 3000);
+    }
+
+    // Show solution for current question
+    function showSolution() {
+      const resultBox = document.getElementById("result");
+      resultBox.className = "error";
+      resultBox.innerHTML = "<i class='fas fa-code'></i> Correct solution:\n\n" + questions[current].answer;
+      solutionsViewed++;
+      clearInterval(timer);
+    }
+
+    // Move to next question or show completion
+    function nextQuestion() {
+      current++;
+      hintsUsed = 0;
+      solutionsViewed = 0;
+
+      if (current < questions.length) {
+        startQuestion();
+      } else {
+        showCompletion();
+      }
+    }
+
+    // Show completion screen with results
+    function showCompletion() {
+      document.getElementById("questionBox").style.display = "none";
+      const completionBox = document.getElementById("completionMessage");
+      completionBox.style.display = "block";
+
+      // Calculate score and time taken
+      const endTime = new Date();
+      const timeTaken = Math.floor((endTime - startTime) / 1000);
+      const minutes = Math.floor(timeTaken / 60);
+      const seconds = timeTaken % 60;
+
+      const percentage = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreDisplay").textContent = `${percentage}%`;
+      document.getElementById("progressBar").style.width = `${percentage}%`;
+
+      // Generate completion message based on performance
+      let completionText = "";
+      if (percentage === 100) {
+        completionText = `Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're a Data Science expert!`;
+      } else if (percentage >= 80) {
+        completionText = `Great job! You answered ${score} out of ${questions.length} questions correctly in ${minutes}m ${seconds}s.`;
+      } else if (percentage >= 60) {
+        completionText = `Good effort! You got ${score} out of ${questions.length} correct. Keep practicing to improve your skills.`;
+      } else {
+        completionText = `You answered ${score} out of ${questions.length} correctly. Review the solutions and try again to improve.`;
+      }
+
+      if (hintsUsed > 0) {
+        completionText += ` You used hints ${hintsUsed} time${hintsUsed > 1 ? 's' : ''}.`;
+      }
+
+      document.getElementById("completionText").textContent = completionText;
+
+      // Add achievement badges
+      const badgeContainer = document.getElementById('badgeContainer');
+      badgeContainer.innerHTML = '';
+
+      if (percentage === 100) {
+        addBadge(badgeContainer, "Perfect Score", "fas fa-trophy");
+      }
+
+      if (perfectQuestions.length > 0) {
+        addBadge(badgeContainer, `${perfectQuestions.length} Perfect Solutions`, "fas fa-star");
+      }
+
+      if (timeTaken < 300) { // Less than 5 minutes
+        addBadge(badgeContainer, "Speed Runner", "fas fa-bolt");
+      }
+
+      if (hintsUsed === 0) {
+        addBadge(badgeContainer, "No Hints Needed", "fas fa-brain");
+      }
+    }
+
+    // Add achievement badge
+    function addBadge(container, text, icon) {
+      const badge = document.createElement('div');
+      badge.className = 'achievement-badge';
+      badge.innerHTML = `<i class="${icon}"></i> ${text}`;
+      container.appendChild(badge);
+    }
+
+    // Initialize the app on window load
+    window.onload = init;
+  </script>
+</body>
+</html>
