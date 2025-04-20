@@ -1,3 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Quiz | QuizMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --error-color: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            color: var(--secondary-color);
+        }
+        
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
+        }
+        
+        .quiz-header .difficulty-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .hard-badge {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--error-color);
+        }
+        
+        .quiz-header h1 {
+            font-size: 42px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .quiz-header p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            flex-grow: 1;
+            margin: 0 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .question-counter {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .question-card {
+            margin-bottom: 40px;
+        }
+        
+        .question-text {
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .question-number {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .code-editor {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+        
+        .code-editor:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .result {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success-color);
+            border-left: 4px solid var(--success-color);
+            display: block;
+        }
+        
+        .error {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: var(--error-color);
+            border-left: 4px solid var(--error-color);
+            display: block;
+        }
+        
+        .hint {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ff9800;
+            border-left: 4px solid #ff9800;
+            display: block;
+        }
+        
+        .time-up {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: var(--error-color);
+            border-left: 4px solid var(--error-color);
+            display: block;
+        }
+        
+        .quiz-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .btn-hint {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .btn-hint:hover {
+            background-color: #f57c00;
+        }
+        
+        .btn-solution {
+            background-color: var(--error-color);
+            color: white;
+        }
+        
+        .btn-solution:hover {
+            background-color: #d32f2f;
+        }
+        
+        .btn-check {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-check:hover {
+            background-color: #388e3c;
+        }
+        
+        .timer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .timer-container.warning {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: #ff9800;
+        }
+        
+        .timer-container.danger {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--error-color);
+        }
+        
+        #timer {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .completion-message {
+            text-align: center;
+            display: none;
+        }
+        
+        .completion-message h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .score-display {
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .completion-text {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .achievement-badge {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--light-color);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .achievement-badge i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0 10px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 5px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links a:hover::before {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .quiz-header h1 {
+                font-size: 32px;
+            }
+            
+            .question-text {
+                font-size: 18px;
+            }
+            
+            .quiz-container {
+                padding: 20px;
+            }
+            
+            .quiz-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="homepage.html#categories">Categories</a></li>
+                    <li><a href="homepage.html#features">Features</a></li>
+                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="datascienceandaipage.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Data Science Quizzes
+        </a>
+        
+        <div class="quiz-header">
+            <div class="difficulty-badge hard-badge">Hard Level</div>
+            <h1>Deep Learning Quiz</h1>
+            <p>Test your knowledge of deep learning concepts with this challenging coding quiz</p>
+        </div>
+        
+        <div class="quiz-container" id="questionBox">
+            <div class="timer-container" id="timerContainer">
+                <span id="timer">3:00</span>
+            </div>
+            
+            <div class="quiz-progress">
+                <span class="question-counter">Question 1 of 5</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <h2 id="questionTitle">Data Cleaning and Preprocessing</h2>
+                <p id="questionText">Write a function to clean and preprocess a dataset by handling missing values and encoding categorical variables.</p>
+                
+                <textarea id="javaCode" class="code-editor" placeholder="# Write your Python code here"></textarea>
+                
+                <div id="result" class="result"></div>
+                
+                <div class="quiz-footer">
+                    <button class="btn btn-hint" onclick="showHint()">
+                        <i class="fas fa-lightbulb"></i> Hint (Ctrl+H)
+                    </button>
+                    <button class="btn btn-solution" onclick="showSolution()">
+                        <i class="fas fa-code"></i> Solution (Ctrl+S)
+                    </button>
+                    <button class="btn btn-check" onclick="checkCode()">
+                        <i class="fas fa-check"></i> Check (Ctrl+Enter)
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quiz-container completion-message" id="completionMessage">
+            <h2>Quiz Completed!</h2>
+            <div class="score-display" id="scoreDisplay">0%</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            </div>
+            <p class="completion-text" id="completionText"></p>
+            <div class="badge-container" id="badgeContainer"></div>
+            <div class="quiz-footer" style="justify-content: center;">
+                <a href="deeplearning_datascience(hard).html" class="btn" style="margin-right: 15px;">
+                    <i class="fas fa-redo"></i> Try Again
+                </a>
+                <a href="datascienceandaipage.html" class="btn">
+                    <i class="fas fa-list"></i> Back to Quizzes
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="homepage.html#categories">Categories</a></li>
+                        <li><a href="homepage.html#features">Features</a></li>
+                        <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="webdevloppage.html">Web Development</a></li>
+                        <li><a href="androiddevloppage.html">Android Development</a></li>
+                        <li><a href="datascienceandaipage.html">Data Science and AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> team5@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> 8019933268</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Hyderabad, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
 <script>
   // Data Science questions with difficulty levels and categories
   const questions = [
@@ -120,224 +776,220 @@ def hyperparameter_tuning(X, y):
 
   // Update the placeholder text in the editor to mention Python
   document.getElementById("javaCode").placeholder = "# Write your Python code here";
+  
   // User data and state
-    let current = 0;
-    let timer;
-    let timeLeft = 180; // 3 minutes
-    let score = 0;
-    let hintsUsed = 0;
-    let solutionsViewed = 0;
-    let perfectQuestions = [];
-    let startTime = new Date();
+  let current = 0;
+  let timer;
+  let timeLeft = 180; // 3 minutes
+  let score = 0;
+  let hintsUsed = 0;
+  let solutionsViewed = 0;
+  let perfectQuestions = [];
+  let startTime = new Date();
 
-    // Initialize the app
-    function init() {
-      // Set random user avatar color
-      const colors = ['#4cc9f0', '#4361ee', '#3f37c9', '#f72585', '#7209b7'];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      document.getElementById('userAvatar').style.background = randomColor;
+  // Initialize the app
+  function init() {
+    // Set first question
+    startQuestion();
 
-      // Set first question
-      startQuestion();
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', handleKeyboardShortcuts);
+  }
 
-      // Add keyboard shortcuts
-      document.addEventListener('keydown', handleKeyboardShortcuts);
-    }
-
-    // Handle keyboard shortcuts
-    function handleKeyboardShortcuts(event) {
-      if (event.ctrlKey) {
-        if (event.key === 'Enter') {
-          checkCode();
-        } else if (event.key === 'h') {
-          showHint();
-        } else if (event.key === 's') {
-          showSolution();
-        }
+  // Handle keyboard shortcuts
+  function handleKeyboardShortcuts(event) {
+    if (event.ctrlKey) {
+      if (event.key === 'Enter') {
+        checkCode();
+      } else if (event.key === 'h') {
+        showHint();
+      } else if (event.key === 's') {
+        showSolution();
       }
     }
+  }
 
-    // Start a new question
-    function startQuestion() {
-      const q = questions[current];
-      document.getElementById("questionTitle").textContent = q.title;
-      document.getElementById("questionText").textContent = q.description;
-      document.querySelector(".question-counter").textContent = `Question ${current + 1} of ${questions.length}`;
+  // Start a new question
+  function startQuestion() {
+    const q = questions[current];
+    document.getElementById("questionTitle").textContent = q.title;
+    document.getElementById("questionText").textContent = q.description;
+    document.querySelector(".question-counter").textContent = `Question ${current + 1} of ${questions.length}`;
 
-      // Set starter code with question as comment
-      document.getElementById("javaCode").value = `# ${q.description}\n`;
+    // Set starter code with question as comment
+    document.getElementById("javaCode").value = `# ${q.description}\n`;
 
-      document.getElementById("result").textContent = "";
-      document.getElementById("result").className = "";
-      timeLeft = 180;
-      updateTimer();
+    document.getElementById("result").textContent = "";
+    document.getElementById("result").className = "";
+    timeLeft = 180;
+    updateTimer();
 
-      // Reset timer styling
-      document.getElementById('timerContainer').className = 'timer-container';
+    // Reset timer styling
+    document.getElementById('timerContainer').className = 'timer-container';
 
-      if (timer) clearInterval(timer);
-      timer = setInterval(updateTimer, 1000);
+    if (timer) clearInterval(timer);
+    timer = setInterval(updateTimer, 1000);
+  }
+
+  // Update timer display
+  function updateTimer() {
+    let min = Math.floor(timeLeft / 60);
+    let sec = timeLeft % 60;
+    document.getElementById("timer").textContent = `${min}:${sec < 10 ? "0" : ""}${sec}`;
+
+    // Update timer styling based on remaining time
+    const timerElement = document.getElementById('timerContainer');
+    if (timeLeft <= 30 && timeLeft > 10) {
+      timerElement.classList.add('warning');
+      timerElement.classList.remove('danger');
+    } else if (timeLeft <= 10) {
+      timerElement.classList.remove('warning');
+      timerElement.classList.add('danger');
+    } else {
+      timerElement.className = 'timer-container';
     }
 
-    // Update timer display
-    function updateTimer() {
-      let min = Math.floor(timeLeft / 60);
-      let sec = timeLeft % 60;
-      document.getElementById("timer").textContent = `${min}:${sec < 10 ? "0" : ""}${sec}`;
-
-      // Update timer styling based on remaining time
-      const timerElement = document.getElementById('timerContainer');
-      if (timeLeft <= 30 && timeLeft > 10) {
-        timerElement.classList.add('warning');
-        timerElement.classList.remove('danger');
-      } else if (timeLeft <= 10) {
-        timerElement.classList.remove('warning');
-        timerElement.classList.add('danger');
-      } else {
-        timerElement.className = 'timer-container';
-      }
-
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        const resultBox = document.getElementById("result");
-        resultBox.className = "time-up";
-        resultBox.innerHTML = "<i class='fas fa-clock'></i> Time's up!\n\nCorrect answer:\n\n" + questions[current].answer;
-        setTimeout(() => {
-          nextQuestion();
-        }, 3000);
-      }
-      timeLeft--;
-    }
-
-    // Show hint for current question
-    function showHint() {
-      const resultBox = document.getElementById("result");
-      resultBox.className = "hint";
-      resultBox.innerHTML = "<i class='fas fa-lightbulb'></i> Hint:\n\n" + questions[current].hint;
-      hintsUsed++;
-
-      // Animate the hint button
-      const hintBtn = document.querySelector('.btn-hint');
-      hintBtn.style.transform = 'scale(0.9)';
-      setTimeout(() => {
-        hintBtn.style.transform = '';
-      }, 300);
-    }
-
-    // Check user's code against solution
-    function checkCode() {
-      const userCode = document.getElementById("javaCode").value.trim();
-      const correctCode = questions[current].answer.trim();
-      const resultBox = document.getElementById("result");
-
+    if (timeLeft <= 0) {
       clearInterval(timer);
-
-      if (userCode === correctCode) {
-        resultBox.className = "success";
-        resultBox.innerHTML = "<i class='fas fa-check-circle'></i> Your solution was correct!";
-        score++;
-
-        // Add to perfect questions if solved without hints/solutions
-        if (hintsUsed === 0 && solutionsViewed === 0) {
-          perfectQuestions.push(current);
-        }
-      } else {
-        resultBox.className = "error";
-        resultBox.innerHTML = "<i class='fas fa-times-circle'></i> Incorrect solution.\n\nCorrect answer:\n\n" + correctCode;
-      }
-
+      const resultBox = document.getElementById("result");
+      resultBox.className = "time-up";
+      resultBox.innerHTML = "<i class='fas fa-clock'></i> Time's up!\n\nCorrect answer:\n\n" + questions[current].answer;
       setTimeout(() => {
         nextQuestion();
       }, 3000);
     }
+    timeLeft--;
+  }
 
-    // Show solution for current question
-    function showSolution() {
-      const resultBox = document.getElementById("result");
+  // Show hint for current question
+  function showHint() {
+    const resultBox = document.getElementById("result");
+    resultBox.className = "hint";
+    resultBox.innerHTML = "<i class='fas fa-lightbulb'></i> Hint:\n\n" + questions[current].hint;
+    hintsUsed++;
+
+    // Animate the hint button
+    const hintBtn = document.querySelector('.btn-hint');
+    hintBtn.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      hintBtn.style.transform = '';
+    }, 300);
+  }
+
+  // Check user's code against solution
+  function checkCode() {
+    const userCode = document.getElementById("javaCode").value.trim();
+    const correctCode = questions[current].answer.trim();
+    const resultBox = document.getElementById("result");
+
+    clearInterval(timer);
+
+    if (userCode === correctCode) {
+      resultBox.className = "success";
+      resultBox.innerHTML = "<i class='fas fa-check-circle'></i> Your solution was correct!";
+      score++;
+
+      // Add to perfect questions if solved without hints/solutions
+      if (hintsUsed === 0 && solutionsViewed === 0) {
+        perfectQuestions.push(current);
+      }
+    } else {
       resultBox.className = "error";
-      resultBox.innerHTML = "<i class='fas fa-code'></i> Correct solution:\n\n" + questions[current].answer;
-      solutionsViewed++;
-      clearInterval(timer);
+      resultBox.innerHTML = "<i class='fas fa-times-circle'></i> Incorrect solution.\n\nCorrect answer:\n\n" + correctCode;
     }
 
-    // Move to next question or show completion
-    function nextQuestion() {
-      current++;
-      hintsUsed = 0;
-      solutionsViewed = 0;
+    setTimeout(() => {
+      nextQuestion();
+    }, 3000);
+  }
 
-      if (current < questions.length) {
-        startQuestion();
-      } else {
-        showCompletion();
-      }
+  // Show solution for current question
+  function showSolution() {
+    const resultBox = document.getElementById("result");
+    resultBox.className = "error";
+    resultBox.innerHTML = "<i class='fas fa-code'></i> Correct solution:\n\n" + questions[current].answer;
+    solutionsViewed++;
+    clearInterval(timer);
+  }
+
+  // Move to next question or show completion
+  function nextQuestion() {
+    current++;
+    hintsUsed = 0;
+    solutionsViewed = 0;
+
+    if (current < questions.length) {
+      startQuestion();
+    } else {
+      showCompletion();
+    }
+  }
+
+  // Show completion screen with results
+  function showCompletion() {
+    document.getElementById("questionBox").style.display = "none";
+    const completionBox = document.getElementById("completionMessage");
+    completionBox.style.display = "block";
+
+    // Calculate score and time taken
+    const endTime = new Date();
+    const timeTaken = Math.floor((endTime - startTime) / 1000);
+    const minutes = Math.floor(timeTaken / 60);
+    const seconds = timeTaken % 60;
+
+    const percentage = Math.round((score / questions.length) * 100);
+    document.getElementById("scoreDisplay").textContent = `${percentage}%`;
+    document.getElementById("progressBar").style.width = `${percentage}%`;
+
+    // Generate completion message based on performance
+    let completionText = "";
+    if (percentage === 100) {
+      completionText = `Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're a Data Science expert!`;
+    } else if (percentage >= 80) {
+      completionText = `Great job! You answered ${score} out of ${questions.length} questions correctly in ${minutes}m ${seconds}s.`;
+    } else if (percentage >= 60) {
+      completionText = `Good effort! You got ${score} out of ${questions.length} correct. Keep practicing to improve your skills.`;
+    } else {
+      completionText = `You answered ${score} out of ${questions.length} correctly. Review the solutions and try again to improve.`;
     }
 
-    // Show completion screen with results
-    function showCompletion() {
-      document.getElementById("questionBox").style.display = "none";
-      const completionBox = document.getElementById("completionMessage");
-      completionBox.style.display = "block";
-
-      // Calculate score and time taken
-      const endTime = new Date();
-      const timeTaken = Math.floor((endTime - startTime) / 1000);
-      const minutes = Math.floor(timeTaken / 60);
-      const seconds = timeTaken % 60;
-
-      const percentage = Math.round((score / questions.length) * 100);
-      document.getElementById("scoreDisplay").textContent = `${percentage}%`;
-      document.getElementById("progressBar").style.width = `${percentage}%`;
-
-      // Generate completion message based on performance
-      let completionText = "";
-      if (percentage === 100) {
-        completionText = `Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're a Data Science expert!`;
-      } else if (percentage >= 80) {
-        completionText = `Great job! You answered ${score} out of ${questions.length} questions correctly in ${minutes}m ${seconds}s.`;
-      } else if (percentage >= 60) {
-        completionText = `Good effort! You got ${score} out of ${questions.length} correct. Keep practicing to improve your skills.`;
-      } else {
-        completionText = `You answered ${score} out of ${questions.length} correctly. Review the solutions and try again to improve.`;
-      }
-
-      if (hintsUsed > 0) {
-        completionText += ` You used hints ${hintsUsed} time${hintsUsed > 1 ? 's' : ''}.`;
-      }
-
-      document.getElementById("completionText").textContent = completionText;
-
-      // Add achievement badges
-      const badgeContainer = document.getElementById('badgeContainer');
-      badgeContainer.innerHTML = '';
-
-      if (percentage === 100) {
-        addBadge(badgeContainer, "Perfect Score", "fas fa-trophy");
-      }
-
-      if (perfectQuestions.length > 0) {
-        addBadge(badgeContainer, `${perfectQuestions.length} Perfect Solutions`, "fas fa-star");
-      }
-
-      if (timeTaken < 300) { // Less than 5 minutes
-        addBadge(badgeContainer, "Speed Runner", "fas fa-bolt");
-      }
-
-      if (hintsUsed === 0) {
-        addBadge(badgeContainer, "No Hints Needed", "fas fa-brain");
-      }
+    if (hintsUsed > 0) {
+      completionText += ` You used hints ${hintsUsed} time${hintsUsed > 1 ? 's' : ''}.`;
     }
 
-    // Add achievement badge
-    function addBadge(container, text, icon) {
-      const badge = document.createElement('div');
-      badge.className = 'achievement-badge';
-      badge.innerHTML = `<i class="${icon}"></i> ${text}`;
-      container.appendChild(badge);
+    document.getElementById("completionText").textContent = completionText;
+
+    // Add achievement badges
+    const badgeContainer = document.getElementById('badgeContainer');
+    badgeContainer.innerHTML = '';
+
+    if (percentage === 100) {
+      addBadge(badgeContainer, "Perfect Score", "fas fa-trophy");
     }
 
-    // Initialize the app on window load
-    window.onload = init;
-  </script>
+    if (perfectQuestions.length > 0) {
+      addBadge(badgeContainer, `${perfectQuestions.length} Perfect Solutions`, "fas fa-star");
+    }
+
+    if (timeTaken < 300) { // Less than 5 minutes
+      addBadge(badgeContainer, "Speed Runner", "fas fa-bolt");
+    }
+
+    if (hintsUsed === 0) {
+      addBadge(badgeContainer, "No Hints Needed", "fas fa-brain");
+    }
+  }
+
+  // Add achievement badge
+  function addBadge(container, text, icon) {
+    const badge = document.createElement('div');
+    badge.className = 'achievement-badge';
+    badge.innerHTML = `<i class="${icon}"></i> ${text}`;
+    container.appendChild(badge);
+  }
+
+  // Initialize the app on window load
+  window.onload = init;
+</script>
 </body>
 </html>
