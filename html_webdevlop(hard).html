@@ -486,6 +486,72 @@
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 15px 0 5px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 25px;
+    height: 1px;
+    background-color: var(--accent-color);
+}
+
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-links li {
+    margin-bottom: 3px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.social-links {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.social-links a {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    font-size: 11px;
+}
   </style>
 </head>
 <body>
@@ -498,10 +564,10 @@
                     <span>QuizMaster</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#categories">Categories</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="homepage.html#categories">Categories</a></li>
+                    <li><a href="homepage.html#features">Features</a></li>
+                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
                     
             </nav>
         </div>
@@ -577,6 +643,49 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <ul class="footer-links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Webinars</a></li>
+            <li><a href="#">Podcasts</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Social</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 CodeMaster. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
   // HTML questions with difficulty levels and categories
