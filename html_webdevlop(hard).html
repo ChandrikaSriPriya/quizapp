@@ -486,71 +486,105 @@
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
-
 footer {
-    background-color: var(--dark-color);
-    color: white;
-    padding: 15px 0 5px;
+  background-color: var(--dark-color);
+  color: white;
+  padding: 20px 0 10px;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
-    margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .footer-column h3 {
-    font-size: 14px;
-    margin-bottom: 8px;
-    position: relative;
-    padding-bottom: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 5px;
 }
 
 .footer-column h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 25px;
-    height: 1px;
-    background-color: var(--accent-color);
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--accent-color);
 }
 
 .footer-links {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
 }
 
 .footer-links li {
-    margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .footer-links a {
-    color: #aaa;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 12px;
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
 }
 
 .social-links {
-    display: flex;
-    gap: 5px;
-    margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .social-links a {
-    width: 25px;
-    height: 25px;
-    font-size: 12px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.social-links a i {
+  position: relative;
+  z-index: 1;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover::before {
+  opacity: 0.5;
+  transform: scale(1.1);
 }
 
 .footer-bottom {
-    text-align: center;
-    padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #aaa;
-    font-size: 11px;
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  font-size: 12px;
 }
   </style>
 </head>
@@ -648,31 +682,8 @@ footer {
     <div class="container">
       <div class="footer-content">
         <div class="footer-column">
-          <h3>About Us</h3>
-          <ul class="footer-links">
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Webinars</a></li>
-            <li><a href="#">Podcasts</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Support</h3>
-          <ul class="footer-links">
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h3>Social</h3>
+          <h3>QuizMaster</h3>
+          <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -680,9 +691,35 @@ footer {
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="homepage.html#categories">Categories</a></li>
+            <li><a href="homepage.html#features">Features</a></li>
+            <li><a href="homepage.html#testimonials">Testimonials</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="webdevloppage.html">Web Development</a></li>
+            <li><a href="androiddevloppage.html">Android Development</a></li>
+            <li><a href="datascienceandaipage.html">Data Science and AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-envelope"></i> team5@gmail.com</li>
+            <li><i class="fas fa-phone"></i> 8019933268</li>
+            <li><i class="fas fa-map-marker-alt"></i> Hyderabad, India</li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 CodeMaster. All rights reserved.</p>
+        <p>&copy; 2024 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
       </div>
     </div>
   </footer>
@@ -724,7 +761,7 @@ footer {
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" id="password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+    <input type="password" id="password" required minlength="8" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}">
     <span class="error-message"></span>
   </div>
   <div class="form-group">
@@ -873,10 +910,10 @@ footer {
       const q = questions[current];
       document.getElementById("questionTitle").textContent = q.title;
       document.getElementById("questionText").textContent = q.description;
-      document.querySelector(".question-counter").textContent = `Question ${current + 1} of ${questions.length}`;
+      document.querySelector(".question-counter").textContent = Question ${current + 1} of ${questions.length};
 
       // Set starter code with question as comment
-      document.getElementById("javaCode").value = `<!-- ${q.description} -->\n\n`;
+      document.getElementById("javaCode").value = <!-- ${q.description} -->\n\n;
 
       document.getElementById("result").textContent = "";
       document.getElementById("result").className = "";
@@ -894,7 +931,7 @@ footer {
     function updateTimer() {
       let min = Math.floor(timeLeft / 60);
       let sec = timeLeft % 60;
-      document.getElementById("timer").textContent = `${min}:${sec < 10 ? "0" : ""}${sec}`;
+      document.getElementById("timer").textContent = ${min}:${sec < 10 ? "0" : ""}${sec};
 
       // Update timer styling based on remaining time
       const timerElement = document.getElementById('timerContainer');
@@ -997,19 +1034,19 @@ footer {
       const seconds = timeTaken % 60;
 
       const percentage = Math.round((score / questions.length) * 100);
-      document.getElementById("scoreDisplay").textContent = `${percentage}%`;
-      document.getElementById("progressBar").style.width = `${percentage}%`;
+      document.getElementById("scoreDisplay").textContent = ${percentage}%;
+      document.getElementById("progressBar").style.width = ${percentage}%;
 
       // Generate completion message based on performance
       let completionText = "";
       if (percentage === 100) {
-        completionText = `Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're an HTML expert!`;
+        completionText = Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're an HTML expert!;
       } else if (percentage >= 80) {
-        completionText = `Great job! You answered ${score} out of ${questions.length} questions correctly in ${minutes}m ${seconds}s.`;
+        completionText = Great job! You answered ${score} out of ${questions.length} questions correctly in ${minutes}m ${seconds}s.;
       } else if (percentage >= 60) {
-        completionText = `Good effort! You got ${score} out of ${questions.length} correct. Keep practicing to improve your skills.`;
+        completionText = Good effort! You got ${score} out of ${questions.length} correct. Keep practicing to improve your skills.;
       } else {
-        completionText = `You answered ${score} out of ${questions.length} correctly. Review the solutions and try again to improve.`;
+        completionText = You answered ${score} out of ${questions.length} correctly. Review the solutions and try again to improve.;
       }
 
       if (hintsUsed > 0) {
@@ -1027,7 +1064,7 @@ footer {
       }
 
       if (perfectQuestions.length > 0) {
-        addBadge(badgeContainer, `${perfectQuestions.length} Perfect Solutions`, "fas fa-star");
+        addBadge(badgeContainer, ${perfectQuestions.length} Perfect Solutions, "fas fa-star");
       }
 
       if (timeTaken < 300) { // Less than 5 minutes
@@ -1043,7 +1080,7 @@ footer {
     function addBadge(container, text, icon) {
       const badge = document.createElement('div');
       badge.className = 'achievement-badge';
-      badge.innerHTML = `<i class="${icon}"></i> ${text}`;
+      badge.innerHTML = <i class="${icon}"></i> ${text};
       container.appendChild(badge);
     }
 
