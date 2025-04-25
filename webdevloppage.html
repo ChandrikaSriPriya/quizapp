@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Android Development Quizzes | QuizMaster</title>
+    <title>Web Development Quizzes | QuizMaster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -339,123 +339,105 @@
         }
         
         footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 20px 0 10px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-column h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            position: relative;
-            padding-bottom: 5px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 30px;
-            height: 2px;
-            background-color: var(--accent-color);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 5px;
-        }
-        
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        
-        .social-links a {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+  background-color: var(--dark-color);
+  color: white;
+  padding: 20px 0 10px;
+}
 
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            opacity: 0.3;
-            transition: all 0.3s ease;
-        }
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
 
-        .social-links a i {
-            position: relative;
-            z-index: 1;
-        }
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 5px;
+}
 
-        .social-links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+.footer-column h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--accent-color);
+}
 
-        .social-links a:hover::before {
-            opacity: 0.5;
-            transform: scale(1.1);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 12px;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .quiz-header h1 {
-                font-size: 32px;
-            }
-            
-            .language-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .difficulty-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 5px;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.social-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.social-links a {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.social-links a i {
+  position: relative;
+  z-index: 1;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover::before {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  font-size: 12px;
+}
     </style>
 </head>
 <body>
@@ -483,93 +465,77 @@
         </a>
         
         <div class="quiz-header">
-            <h1>Android Development Quizzes</h1>
-            <p>Test your knowledge of Android development technologies and frameworks. Select a language to begin your quiz journey.</p>
+            <h1>Web Development Quizzes</h1>
+            <p>Test your knowledge of web development technologies and frameworks. Select a language to begin your quiz journey.</p>
         </div>
         
         <div class="language-grid">
-            <!-- Kotlin -->
             <div class="language-card">
                 <div class="language-icon">
-                    <i class="fab fa-android"></i>
+                    <i class="fab fa-html5"></i>
                 </div>
-                <h3>Kotlin</h3>
-                <p>The modern, statically-typed programming language for Android development.</p>
-                <a href="#kotlin-quiz" class="btn">Select Kotlin</a>
+                <h3>HTML</h3>
+                <p>The standard markup language for documents designed to be displayed in a web browser.</p>
+                <a href="#html-quiz" class="btn">Select HTML</a>
             </div>
             
-            <!-- Java -->
             <div class="language-card">
                 <div class="language-icon">
-                    <i class="fab fa-java"></i>
+                    <i class="fab fa-css3-alt"></i>
                 </div>
-                <h3>Java</h3>
-                <p>The traditional language for Android development with extensive libraries.</p>
-                <a href="#java-quiz" class="btn">Select Java</a>
+                <h3>CSS</h3>
+                <p>Style sheet language used for describing the presentation of a document written in HTML.</p>
+                <a href="#css-quiz" class="btn">Select CSS</a>
             </div>
             
-            <!-- XML -->
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>XML</h3>
-                <p>Markup language for designing Android app layouts and configurations.</p>
-                <a href="#xml-quiz" class="btn">Select XML</a>
-            </div>
-            
-            <!-- SQL -->
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3>SQL</h3>
-                <p>Standard language for managing and querying relational databases in Android.</p>
-                <a href="#sql-quiz" class="btn">Select SQL</a>
-            </div>
-            
-            <!-- Dart -->
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Dart</h3>
-                <p>Programming language used for Flutter mobile app development.</p>
-                <a href="#dart-quiz" class="btn">Select Dart</a>
-            </div>
-            
-            <!-- JavaScript -->
             <div class="language-card">
                 <div class="language-icon">
                     <i class="fab fa-js"></i>
                 </div>
                 <h3>JavaScript</h3>
-                <p>Used in hybrid mobile apps with frameworks like React Native.</p>
+                <p>Programming language that conforms to the ECMAScript specification for web interactivity.</p>
                 <a href="#js-quiz" class="btn">Select JavaScript</a>
             </div>
             
-            <!-- TypeScript -->
             <div class="language-card">
                 <div class="language-icon">
-                    <i class="fas fa-file-code"></i>
+                    <i class="fab fa-react"></i>
                 </div>
-                <h3>TypeScript</h3>
-                <p>Typed superset of JavaScript used in some hybrid app frameworks.</p>
-                <a href="#typescript-quiz" class="btn">Select TypeScript</a>
+                <h3>React</h3>
+                <p>JavaScript library for building user interfaces, maintained by Facebook and developers.</p>
+                <a href="#react-quiz" class="btn">Select React</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fab fa-angular"></i>
+                </div>
+                <h3>Angular</h3>
+                <p>TypeScript-based open-source web application framework led by Google.</p>
+                <a href="#angular-quiz" class="btn">Select Angular</a>
+            </div>
+            
+            <div class="language-card">
+                <div class="language-icon">
+                    <i class="fab fa-node-js"></i>
+                </div>
+                <h3>Node.js</h3>
+                <p>JavaScript runtime built on Chrome's V8 JavaScript engine for server-side programming.</p>
+                <a href="#node-quiz" class="btn">Select Node.js</a>
             </div>
         </div>
         
-        <!-- Kotlin Quiz Difficulty Levels -->
-        <div id="kotlin-quiz" class="difficulty-levels">
-            <h2>Kotlin Quiz - Select Difficulty</h2>
+        <!-- HTML Quiz Difficulty Levels -->
+        <div id="html-quiz" class="difficulty-levels">
+            <h2>HTML Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic syntax, variables, and simple functions in Kotlin.</p>
-                    <a href="kotlin_android(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Basic HTML elements, tags, and attributes. Perfect for beginners.</p>
+                    <a href="html_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -577,8 +543,8 @@
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>Object-oriented concepts, extensions, and Android integration.</p>
-                    <a href="kotlin_android(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Forms, semantic HTML, and accessibility. For intermediate developers.</p>
+                    <a href="html_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -586,23 +552,24 @@
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Coroutines, advanced functional programming, and performance optimization.</p>
-                    <a href="kotlin_android(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Advanced concepts like web components and performance optimization.</p>
+                    <a href="html_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
+
                 </div>
             </div>
         </div>
         
-        <!-- Java Quiz Difficulty Levels -->
-        <div id="java-quiz" class="difficulty-levels">
-            <h2>Java Quiz - Select Difficulty</h2>
+        <!-- CSS Quiz Difficulty Levels -->
+        <div id="css-quiz" class="difficulty-levels">
+            <h2>CSS Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic Java syntax, variables, and simple Android activities.</p>
-                    <a href="java_android(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Basic selectors, properties, and values. Great for CSS beginners.</p>
+                    <a href="css_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -610,8 +577,8 @@
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>OOP concepts, Android lifecycle, and common design patterns.</p>
-                    <a href="java_android(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Flexbox, Grid, and responsive design principles.</p>
+                    <a href="css_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -619,107 +586,8 @@
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Multithreading, memory management, and performance optimization.</p>
-                    <a href="java_android(hard).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- XML Quiz Difficulty Levels -->
-        <div id="xml-quiz" class="difficulty-levels">
-            <h2>XML Quiz - Select Difficulty</h2>
-            <div class="difficulty-grid">
-                <div class="difficulty-card easy">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Easy</h3>
-                    <p>Basic XML structure and simple Android layouts.</p>
-                    <a href="xml_android(easy).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card medium">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <h3>Medium</h3>
-                    <p>ConstraintLayout, styles, themes, and resource management.</p>
-                    <a href="xml_android(medium).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card hard">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Hard</h3>
-                    <p>Advanced view hierarchies, custom attributes, and performance tuning.</p>
-                    <a href="xml_android(hard).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- SQL Quiz Difficulty Levels -->
-        <div id="sql-quiz" class="difficulty-levels">
-            <h2>SQL Quiz - Select Difficulty</h2>
-            <div class="difficulty-grid">
-                <div class="difficulty-card easy">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Easy</h3>
-                    <p>Basic SQL queries and Room database setup.</p>
-                    <a href="sql_datascience(easy).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card medium">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <h3>Medium</h3>
-                    <p>Joins, transactions, and database migrations.</p>
-                    <a href="sql_datascience(medium).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card hard">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Hard</h3>
-                    <p>Complex queries, performance optimization, and security.</p>
-                    <a href="sql_android(hard).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Dart Quiz Difficulty Levels -->
-        <div id="dart-quiz" class="difficulty-levels">
-            <h2>Dart Quiz - Select Difficulty</h2>
-            <div class="difficulty-grid">
-                <div class="difficulty-card easy">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Easy</h3>
-                    <p>Basic Dart syntax and simple Flutter widgets.</p>
-                    <a href="dart_android(easy).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card medium">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <h3>Medium</h3>
-                    <p>State management, streams, and platform channels.</p>
-                    <a href="dart_android(medium).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card hard">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Hard</h3>
-                    <p>Advanced async programming, isolates, and performance tuning.</p>
-                    <a href="dart_android(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Advanced animations, transforms, and CSS architecture.</p>
+                    <a href="css_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -733,7 +601,7 @@
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic JavaScript for React Native development.</p>
+                    <p>Basic syntax, variables, and simple functions.</p>
                     <a href="javascript_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
@@ -742,7 +610,7 @@
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>React Native components and state management.</p>
+                    <p>DOM manipulation, events, and ES6 features.</p>
                     <a href="javasript_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
@@ -751,23 +619,23 @@
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Native modules, performance optimization, and debugging.</p>
-                    <a href="javascript_android(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Closures, prototypes, promises, and advanced patterns.</p>
+                    <a href="javascript_webdevlop(hard).htmll" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
         
-        <!-- TypeScript Quiz Difficulty Levels -->
-        <div id="typescript-quiz" class="difficulty-levels">
-            <h2>TypeScript Quiz - Select Difficulty</h2>
+        <!-- React Quiz Difficulty Levels -->
+        <div id="react-quiz" class="difficulty-levels">
+            <h2>React Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic TypeScript types and interfaces.</p>
-                    <a href="typescript_android(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Basic components, props, and state management.</p>
+                    <a href="react_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card medium">
@@ -775,8 +643,8 @@
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>Generics, decorators, and advanced types.</p>
-                    <a href="typescript_android(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Hooks, context API, and component lifecycle.</p>
+                    <a href="react_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
                 
                 <div class="difficulty-card hard">
@@ -784,8 +652,74 @@
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Type inference, conditional types, and complex patterns.</p>
-                    <a href="typescript_android(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Advanced state management, performance optimization, and custom hooks.</p>
+                    <a href="react_webdevlop(hard).htmll" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Angular Quiz Difficulty Levels -->
+        <div id="angular-quiz" class="difficulty-levels">
+            <h2>Angular Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic components, directives, and data binding.</p>
+                    <a href="angular_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Services, dependency injection, and routing.</p>
+                    <a href="angular_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced RxJS, state management, and performance optimization.</p>
+                    <a href="angular_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Node.js Quiz Difficulty Levels -->
+        <div id="node-quiz" class="difficulty-levels">
+            <h2>Node.js Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic Node.js concepts, modules, and file system operations.</p>
+                    <a href="node_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Express.js, middleware, and basic API development.</p>
+                    <a href="node_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+                
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced authentication, database integration, and performance tuning.</p>
+                    <a href="node_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -793,51 +727,52 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>QuizMaster</h3>
-                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="homepage.html">Home</a></li>
-                        <li><a href="homepage.html#categories">Categories</a></li>
-                        <li><a href="homepage.html#features">Features</a></li>
-                        <li><a href="homepage.html#testimonials">Testimonials</a></li>
-                        <li><a href="#">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="webdevloppage.html">Web Development</a></li>
-                        <li><a href="androiddevloppage.html">Android Development</a></li>
-                        <li><a href="datascienceandaipage.html">Data Science and AI</a></li>
-                        <li><a href="c_language(page).html">C Programming</a></li>
-                        <li><a href="datastructurespage.html">Data Structures</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> team5@gmail.com</li>
-                        <li><i class="fas fa-phone"></i> 8019933268</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Hyderabad, India</li>
-                    </ul>
-                </div>
+          <div class="footer-content">
+            <div class="footer-column">
+              <h3>QuizMaster</h3>
+              <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul class="footer-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="homepage.html#categories">Categories</a></li>
+                <li><a href="homepage.html#features">Features</a></li>
+                <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                <li><a href="#">About Us</a></li>
+              </ul>
             </div>
+            <div class="footer-column">
+              <h3>Categories</h3>
+              <ul class="footer-links">
+                <li><a href="webdevloppage.html">Web Development</a></li>
+                <li><a href="androiddevloppage.html">Android Development</a></li>
+                <li><a href="datascienceandaipage.html">Data Science and AI</a></li>
+                <li><a href="c_language(page).html">C Programming</a></li>
+                <li><a href="datastructurespage.html">Data Structures</a></li>
+              
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Contact Us</h3>
+              <ul class="footer-links">
+                <li><i class="fas fa-envelope"></i> team5@gmail.com</li>
+                <li><i class="fas fa-phone"></i> 8019933268</li>
+                <li><i class="fas fa-map-marker-alt"></i> Hyderabad, India</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2024 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+          </div>
         </div>
-    </footer>
+      </footer>
 
     <script>
         // Smooth scrolling for anchor links
