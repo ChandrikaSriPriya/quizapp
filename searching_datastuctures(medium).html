@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searching Quiz | QuizMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* (Same CSS as provided) */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="homepage.html#categories">Categories</a></li>
+                    <li><a href="homepage.html#features">Features</a></li>
+                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="datastructurespage.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Data Structures Quizzes
+        </a>
+
+        <div class="quiz-header">
+            <div class="difficulty-badge medium-badge">Medium Level</div>
+            <h1>Searching Quiz</h1>
+            <p>Test your knowledge of searching algorithms and data structures with these medium-level questions</p>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-progress">
+                <span class="question-count">Question 1 of 20</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 5%"></div>
+                </div>
+                <span class="score">Score: 0%</span>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">
+                    <span class="question-number">1.</span>
+                    <span class="question">What is the time complexity of linear search?</span>
+                </div>
+
+                <div class="options-container">
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">A</span>
+                        <span class="option-text">O(1)</span>
+                    </div>
+                    <div class="option" data-correct="true">
+                        <span class="option-letter">B</span>
+                        <span class="option-text">O(n)</span>
+                    </div>
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">C</span>
+                        <span class="option-text">O(log n)</span>
+                    </div>
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">D</span>
+                        <span class="option-text">O(n^2)</span>
+                    </div>
+                </div>
+
+                <div class="feedback correct-feedback">
+                    ✅ Correct! Linear search has a time complexity of O(n).
+                </div>
+
+                <div class="feedback incorrect-feedback">
+                    ❌ Incorrect! The correct answer is B) O(n).
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <button class="btn next-btn">Next Question</button>
+            </div>
+        </div>
+
+        <div class="quiz-container result-container">
+            <div class="result-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2>Quiz Completed!</h2>
+            <div class="score-text">Your Score:</div>
+            <div class="score-value">0%</div>
+            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">20</span> questions correctly</p>
+
+            <div class="quiz-footer" style="justify-content: center;">
+                <button id="try-again-btn" class="btn" style="margin-right: 15px;">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+                <a href="datastructurespage.html" class="btn">
+                    <i class="fas fa-list"></i> Back to Quizzes
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Data Structures</h3>
+                    <ul class="footer-links">
+                        <li><a href="stacks-medium-quiz.html">Stacks Quizzes</a></li>
+                        <li><a href="arrays-medium-quiz.html">Arrays Quizzes</a></li>
+                        <li><a href="linkedlists-medium-quiz.html">Linked Lists Quizzes</a></li>
+                        <li><a href="queues-medium-quiz.html">Queues Quizzes</a></li>
+                        <li><a href="trees-medium-quiz.html">Trees Quizzes</a></li>
+                        <li><a href="graphs-medium-quiz.html">Graphs Quizzes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@quizmaster.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Quiz Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Searching quiz questions data
+        const questions = [
+            {
+                question: "What is the time complexity of linear search?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! Linear search has a time complexity of O(n)."
+            },
+            {
+                question: "What is the time complexity of binary search?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! Binary search has a time complexity of O(log n)."
+            },
+            {
+                question: "Which data structure is required for binary search?",
+                options: [
+                    "Linked List",
+                    "Queue",
+                    "Sorted Array",
+                    "Stack"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! Binary search requires a sorted array."
+            },
+            {
+                question: "What is the main advantage of binary search over linear search?",
+                options: [
+                    "Simpler implementation",
+                    "Faster search time",
+                    "Less memory usage",
+                    "Better for unsorted data"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The main advantage of binary search over linear search is faster search time."
+            },
+            {
+                question: "What is the time complexity of searching in a balanced binary search tree?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! Searching in a balanced binary search tree has a time complexity of O(log n)."
+            },
+            {
+                question: "What is the purpose of the 'find' operation in a binary search tree?",
+                options: [
+                    "To add an element",
+                    "To remove an element",
+                    "To search for an element",
+                    "To traverse the tree"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'find' operation in a binary search tree is used to search for an element."
+            },
+            {
+                question: "What is a hash table?",
+                options: [
+                    "A data structure that stores elements in a sorted order",
+                    "A data structure that uses a hash function to map keys to values",
+                    "A data structure that stores elements in a stack",
+                    "A data structure that stores elements in a queue"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A hash table is a data structure that uses a hash function to map keys to values."
+            },
+            {
+                question: "What is the average time complexity of searching in a hash table?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! The average time complexity of searching in a hash table is O(1)."
+            },
+            {
+                question: "What is a collision in a hash table?",
+                options: [
+                    "When two keys map to the same value",
+                    "When two keys map to the same index",
+                    "When the hash table is full",
+                    "When the hash table is empty"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A collision in a hash table occurs when two keys map to the same index."
+            },
+            {
+                question: "What is the purpose of a hash function?",
+                options: [
+                    "To sort elements",
+                    "To map keys to indices",
+                    "To remove elements",
+                    "To traverse elements"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The purpose of a hash function is to map keys to indices."
+            },
+            {
+                question: "What is the time complexity of searching in an unsorted array?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The time complexity of searching in an unsorted array is O(n)."
+            },
+            {
+                question: "What is the time complexity of searching in a sorted array using interpolation search?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(log log n)"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! The time complexity of searching in a sorted array using interpolation search is O(log log n)."
+            },
+            {
+                question: "What is the purpose of the 'contains' method in a set?",
+                options: [
+                    "To add an element",
+                    "To remove an element",
+                    "To check if an element exists",
+                    "To traverse the set"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'contains' method in a set is used to check if an element exists."
+            },
+            {
+                question: "What is the time complexity of searching in a trie?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(m)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! The time complexity of searching in a trie is O(m), where m is the length of the word."
+            },
+            {
+                question: "What is the purpose of the 'search' operation in a graph?",
+                options: [
+                    "To add a vertex",
+                    "To remove a vertex",
+                    "To find a path between two vertices",
+                    "To traverse the graph"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'search' operation in a graph is used to find a path between two vertices."
+            },
+            {
+                question: "What is the time complexity of depth-first search (DFS) in a graph?",
+                options: [
+                    "O(1)",
+                    "O(V + E)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The time complexity of depth-first search (DFS) in a graph is O(V + E), where V is the number of vertices and E is the number of edges."
+            },
+            {
+                question: "What is the time complexity of breadth-first search (BFS) in a graph?",
+                options: [
+                    "O(1)",
+                    "O(V + E)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The time complexity of breadth-first search (BFS) in a graph is O(V + E), where V is the number of vertices and E is the number of edges."
+            },
+            {
+                question: "What is the purpose of the 'search' method in a skip list?",
+                options: [
+                    "To add an element",
+                    "To remove an element",
+                    "To find an element",
+                    "To traverse the list"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'search' method in a skip list is used to find an element."
+            },
+            {
+                question: "What is the time complexity of searching in a skip list?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The time complexity of searching in a skip list is O(log n)."
+            },
+            {
+                question: "What is the purpose of the 'find' method in a red-black tree?",
+                options: [
+                    "To add a node",
+                    "To remove a node",
+                    "To search for a node",
+                    "To traverse the tree"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'find' method in a red-black tree is used to search for a node."
+            },
+            {
+                question: "What is the time complexity of searching in a red-black tree?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The time complexity of searching in a red-black tree is O(log n)."
+            },
+            {
+                question: "What is the purpose of the 'search' method in an AVL tree?",
+                options: [
+                    "To add a node",
+                    "To remove a node",
+                    "To search for a node",
+                    "To traverse the tree"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'search' method in an AVL tree is used to search for a node."
+            },
+            {
+                question: "What is the time complexity of searching in an AVL tree?",
+                options: [
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The time complexity of searching in an AVL tree is O(log n)."
+            }
+        ];
+
+        // DOM elements
+        const quizContainer = document.querySelector('.quiz-container');
+        const resultContainer = document.querySelector('.result-container');
+        const questionElement = document.querySelector('.question');
+        const optionsContainer = document.querySelector('.options-container');
+        const questionNumberElement = document.querySelector('.question-number');
+        const questionCountElement = document.querySelector('.question-count');
+        const progressFillElement = document.querySelector('.progress-fill');
+        const scoreElement = document.querySelector('.score');
+        const nextButton = document.querySelector('.next-btn');
+        const correctFeedback = document.querySelector('.correct-feedback');
+        const incorrectFeedback = document.querySelector('.incorrect-feedback');
+        const resultScoreElement = document.querySelector('.score-value');
+        const correctAnswersElement = document.querySelector('.correct-answers');
+        const totalQuestionsElement = document.querySelector('.total-questions');
+        const tryAgainBtn = document.getElementById('try-again-btn');
+
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        // Initialize quiz
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.innerHTML = currentQuestion.question;
+            questionNumberElement.textContent = currentQuestionIndex + 1;
+            questionCountElement.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            progressFillElement.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.dataset.correct = index === currentQuestion.correctAnswer;
+                optionElement.innerHTML = `
+                    <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+                    <span class="option-text">${option}</span>
+                `;
+                optionElement.addEventListener('click', selectOption);
+                optionsContainer.appendChild(optionElement);
+            });
+
+            correctFeedback.textContent = currentQuestion.explanation;
+            incorrectFeedback.textContent = currentQuestion.explanation.replace('✅', '❌ Incorrect!');
+
+            // Hide feedback and reset next button
+            correctFeedback.style.display = 'none';
+            incorrectFeedback.style.display = 'none';
+            nextButton.textContent = currentQuestionIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question';
+        }
+
+        // Handle option selection
+        function selectOption(e) {
+            const selectedOptionElement = e.currentTarget;
+
+            // If already selected, do nothing
+            if (selectedOptionElement.classList.contains('selected')) return;
+
+            // Remove selection from other options
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Select current option
+            selectedOptionElement.classList.add('selected');
+            selectedOption = selectedOptionElement;
+
+            // Show feedback
+            const isCorrect = selectedOptionElement.dataset.correct === 'true';
+            if (isCorrect) {
+                correctFeedback.style.display = 'block';
+                incorrectFeedback.style.display = 'none';
+            } else {
+                correctFeedback.style.display = 'none';
+                incorrectFeedback.style.display = 'block';
+            }
+        }
+
+        // Handle next button click
+        nextButton.addEventListener('click', () => {
+            if (!selectedOption) return;
+
+            // Check answer and update score
+            const isCorrect = selectedOption.dataset.correct === 'true';
+            if (isCorrect) {
+                score++;
+                scoreElement.textContent = `Score: ${Math.round((score / questions.length) * 100)}%`;
+            }
+
+            // Mark selected option as correct/incorrect
+            selectedOption.classList.remove('selected');
+            selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            // Show correct answer if wrong
+            if (!isCorrect) {
+                document.querySelectorAll('.option').forEach(option => {
+                    if (option.dataset.correct === 'true') {
+                        option.classList.add('correct');
+                    }
+                });
+            }
+
+            // Disable all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+
+            // Prepare for next question or show results
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    selectedOption = null;
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }, 1500);
+        });
+
+        // Show quiz results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+
+            const percentage = Math.round((score / questions.length) * 100);
+            resultScoreElement.textContent = `${percentage}%`;
+            correctAnswersElement.textContent = score;
+            totalQuestionsElement.textContent = questions.length;
+        }
+
+        // Reset quiz to initial state
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedOption = null;
+
+            // Reset UI elements
+            scoreElement.textContent = "Score: 0%";
+            resultContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+
+            // Reload first question
+            loadQuestion();
+        }
+
+        // Add event listener for try again button
+        tryAgainBtn.addEventListener('click', resetQuiz);
+
+        // Start the quiz
+        loadQuestion();
+    </script>
+</body>
+</html>

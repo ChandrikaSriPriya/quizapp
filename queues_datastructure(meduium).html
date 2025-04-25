@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Medium Quiz | QuizMaster</title>
+    <title>Queue Quiz | QuizMaster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,71 +15,71 @@
             --success-color: #4bb543;
             --error-color: #f44336;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fb;
             color: var(--dark-color);
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 20px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 28px;
             font-weight: 700;
             display: flex;
             align-items: center;
         }
-        
+
         .logo i {
             margin-right: 10px;
             color: var(--accent-color);
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .nav-links a:hover {
             color: var(--accent-color);
         }
-        
+
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -93,22 +93,22 @@
             cursor: pointer;
             font-size: 16px;
         }
-        
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
         }
-        
+
         .btn-outline:hover {
             background-color: white;
             color: var(--primary-color);
         }
-        
+
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -118,32 +118,32 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn i {
             margin-right: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn:hover {
             color: var(--secondary-color);
         }
-        
+
         .back-btn:hover i {
             transform: translateX(-5px);
         }
-        
+
         .quiz-header {
             text-align: center;
             margin-bottom: 50px;
             padding-top: 40px;
         }
-        
+
         .quiz-header h1 {
             font-size: 42px;
             color: var(--primary-color);
             margin-bottom: 15px;
         }
-        
+
         .quiz-header .difficulty-badge {
             display: inline-block;
             padding: 5px 15px;
@@ -151,19 +151,19 @@
             font-weight: 600;
             margin-bottom: 15px;
         }
-        
+
         .medium-badge {
             background-color: rgba(255, 193, 7, 0.2);
-            color: #ff9800;
+            color: #ffc107;
         }
-        
+
         .quiz-header p {
             color: #666;
             font-size: 18px;
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         .quiz-container {
             background-color: white;
             border-radius: 10px;
@@ -172,14 +172,14 @@
             max-width: 800px;
             margin: 0 auto 80px;
         }
-        
+
         .quiz-progress {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
-        
+
         .progress-bar {
             height: 8px;
             background-color: #e0e0e0;
@@ -188,23 +188,23 @@
             margin: 0 20px;
             overflow: hidden;
         }
-        
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             width: 0%;
             transition: width 0.3s ease;
         }
-        
+
         .question-count {
             font-weight: 600;
             color: var(--primary-color);
         }
-        
+
         .question-card {
             margin-bottom: 40px;
         }
-        
+
         .question-text {
             font-size: 22px;
             margin-bottom: 25px;
@@ -212,17 +212,17 @@
             display: flex;
             align-items: flex-start;
         }
-        
+
         .question-number {
             margin-right: 10px;
             color: var(--primary-color);
         }
-        
+
         .options-container {
             display: grid;
             gap: 15px;
         }
-        
+
         .option {
             padding: 15px 20px;
             border: 2px solid #e0e0e0;
@@ -232,27 +232,27 @@
             display: flex;
             align-items: center;
         }
-        
+
         .option:hover {
             border-color: var(--accent-color);
             background-color: rgba(76, 201, 240, 0.05);
         }
-        
+
         .option.selected {
             border-color: var(--primary-color);
             background-color: rgba(67, 97, 238, 0.05);
         }
-        
+
         .option.correct {
             border-color: var(--success-color);
             background-color: rgba(76, 175, 80, 0.1);
         }
-        
+
         .option.incorrect {
             border-color: var(--error-color);
             background-color: rgba(244, 67, 54, 0.1);
         }
-        
+
         .option-letter {
             display: inline-block;
             width: 30px;
@@ -265,190 +265,176 @@
             font-weight: 600;
             flex-shrink: 0;
         }
-        
+
         .selected .option-letter {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         .correct .option-letter {
             background-color: var(--success-color);
             color: white;
         }
-        
+
         .incorrect .option-letter {
             background-color: var(--error-color);
             color: white;
         }
-        
+
         .feedback {
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
             display: none;
         }
-        
+
         .correct-feedback {
             background-color: rgba(76, 175, 80, 0.1);
             color: var(--success-color);
             border-left: 4px solid var(--success-color);
         }
-        
+
         .incorrect-feedback {
             background-color: rgba(244, 67, 54, 0.1);
             color: var(--error-color);
             border-left: 4px solid var(--error-color);
         }
-        
+
         .quiz-footer {
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
         }
-        
+
         .next-btn {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         .next-btn:hover {
             background-color: var(--secondary-color);
         }
-        
+
         .finish-btn {
             background-color: var(--success-color);
             color: white;
         }
-        
+
         .finish-btn:hover {
             background-color: #3da73d;
         }
-        
+
         .result-container {
             text-align: center;
             display: none;
         }
-        
+
         .result-icon {
             font-size: 80px;
             color: var(--success-color);
             margin-bottom: 20px;
         }
-        
+
         .score-text {
             font-size: 24px;
             margin-bottom: 20px;
         }
-        
+
         .score-value {
             font-size: 48px;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 30px;
         }
-        
+
         footer {
             background-color: var(--dark-color);
             color: white;
-            padding: 50px 0 20px;
+            padding: 15px 0 5px;
         }
-        
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
         }
-        
+
         .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 14px;
+            margin-bottom: 8px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 3px;
         }
-        
+
         .footer-column h3::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 50px;
-            height: 2px;
+            width: 25px;
+            height: 1px;
             background-color: var(--accent-color);
         }
-        
+
         .footer-links {
             list-style: none;
+            padding-left: 0;
         }
-        
+
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 3px;
         }
-        
+
         .footer-links a {
             color: #aaa;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 12px;
         }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-        
+
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 5px;
+            margin-top: 8px;
         }
-        
+
         .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s ease;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
         }
-        
-        .social-links a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        
+
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 8px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
-            font-size: 14px;
+            font-size: 11px;
         }
-        
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
+
             .quiz-header h1 {
                 font-size: 32px;
             }
-            
+
             .question-text {
                 font-size: 18px;
             }
-            
+
             .quiz-container {
                 padding: 20px;
             }
-            
+
             .quiz-footer {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .btn {
                 width: 100%;
             }
@@ -468,72 +454,71 @@
                     <li><a href="homepage.html#categories">Categories</a></li>
                     <li><a href="homepage.html#features">Features</a></li>
                     <li><a href="homepage.html#testimonials">Testimonials</a></li>
-                    
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <a href="webdevloppage.html" class="back-btn">
+        <a href="datastructurespage.html" class="back-btn">
             <i class="fas fa-arrow-left"></i>
-            Back to Web Development Quizzes
+            Back to Data Structures Quizzes
         </a>
-        
+
         <div class="quiz-header">
             <div class="difficulty-badge medium-badge">Medium Level</div>
-            <h1>CSS Intermediate Quiz</h1>
-            <p>Test your intermediate CSS knowledge with these challenging questions</p>
+            <h1>Queue Quiz</h1>
+            <p>Test your knowledge of queues with these medium-level questions</p>
         </div>
-        
+
         <div class="quiz-container">
             <div class="quiz-progress">
-                <span class="question-count">Question 1 of 10</span>
+                <span class="question-count">Question 1 of 20</span>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width: 10%"></div>
+                    <div class="progress-fill" style="width: 5%"></div>
                 </div>
                 <span class="score">Score: 0%</span>
             </div>
-            
+
             <div class="question-card">
                 <div class="question-text">
                     <span class="question-number">1.</span>
-                    <span class="question">What is the difference between relative, absolute, and fixed positioning in CSS?</span>
+                    <span class="question">What is the time complexity of the 'enqueue' operation in a queue?</span>
                 </div>
-                
+
                 <div class="options-container">
-                    <div class="option" data-correct="false">
-                        <span class="option-letter">A</span>
-                        <span class="option-text">They all work the same way but with different performance characteristics</span>
-                    </div>
                     <div class="option" data-correct="true">
+                        <span class="option-letter">A</span>
+                        <span class="option-text">O(1)</span>
+                    </div>
+                    <div class="option" data-correct="false">
                         <span class="option-letter">B</span>
-                        <span class="option-text">Relative positions relative to itself, absolute to nearest positioned ancestor, fixed to viewport</span>
+                        <span class="option-text">O(n)</span>
                     </div>
                     <div class="option" data-correct="false">
                         <span class="option-letter">C</span>
-                        <span class="option-text">Relative is for text, absolute for images, fixed for backgrounds</span>
+                        <span class="option-text">O(log n)</span>
                     </div>
                     <div class="option" data-correct="false">
                         <span class="option-letter">D</span>
-                        <span class="option-text">They are all deprecated in CSS3</span>
+                        <span class="option-text">O(n^2)</span>
                     </div>
                 </div>
-                
+
                 <div class="feedback correct-feedback">
-                    ✅ Correct! Relative positions relative to itself, absolute positions relative to nearest positioned ancestor (or document if none), and fixed positions relative to the viewport.
+                    ✅ Correct! The 'enqueue' operation in a queue takes constant time, O(1).
                 </div>
-                
+
                 <div class="feedback incorrect-feedback">
-                    ❌ Incorrect! The correct answer is B) Relative positions relative to itself, absolute to nearest positioned ancestor, fixed to viewport. These positioning schemes behave differently in the document flow.
+                    ❌ Incorrect! The correct answer is A) O(1).
                 </div>
             </div>
-            
+
             <div class="quiz-footer">
                 <button class="btn next-btn">Next Question</button>
             </div>
         </div>
-        
+
         <div class="quiz-container result-container">
             <div class="result-icon">
                 <i class="fas fa-trophy"></i>
@@ -541,13 +526,13 @@
             <h2>Quiz Completed!</h2>
             <div class="score-text">Your Score:</div>
             <div class="score-value">0%</div>
-            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">10</span> questions correctly</p>
-            
+            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">20</span> questions correctly</p>
+
             <div class="quiz-footer" style="justify-content: center;">
                 <button id="try-again-btn" class="btn" style="margin-right: 15px;">
                     <i class="fas fa-redo"></i> Try Again
                 </button>
-                <a href="webdevloppage.html" class="btn">
+                <a href="datastructurespage.html" class="btn">
                     <i class="fas fa-list"></i> Back to Quizzes
                 </a>
             </div>
@@ -578,12 +563,14 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Web Development</h3>
+                    <h3>Data Structures</h3>
                     <ul class="footer-links">
-                        <li><a href="html-easy-quiz.html">HTML Quizzes</a></li>
-                        <li><a href="css-easy-quiz.html">CSS Quizzes</a></li>
-                        <li><a href="javascript-easy-quiz.html">JavaScript Quizzes</a></li>
-                        <li><a href="react-easy-quiz.html">React Quizzes</a></li>
+                        <li><a href="stacks-medium-quiz.html">Stacks Quizzes</a></li>
+                        <li><a href="arrays-medium-quiz.html">Arrays Quizzes</a></li>
+                        <li><a href="linkedlists-medium-quiz.html">Linked Lists Quizzes</a></li>
+                        <li><a href="queues-medium-quiz.html">Queues Quizzes</a></li>
+                        <li><a href="trees-medium-quiz.html">Trees Quizzes</a></li>
+                        <li><a href="graphs-medium-quiz.html">Graphs Quizzes</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -602,117 +589,271 @@
     </footer>
 
     <script>
-        // Quiz questions data
+        // Medium-level quiz questions data
         const questions = [
             {
-                question: "What is the difference between relative, absolute, and fixed positioning in CSS?",
+                question: "What is the time complexity of the 'enqueue' operation in a queue?",
                 options: [
-                    "They all work the same way but with different performance characteristics",
-                    "Relative positions relative to itself, absolute to nearest positioned ancestor, fixed to viewport",
-                    "Relative is for text, absolute for images, fixed for backgrounds",
-                    "They are all deprecated in CSS3"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! Relative positions relative to itself, absolute positions relative to nearest positioned ancestor (or document if none), and fixed positions relative to the viewport."
-            },
-            {
-                question: "What is the box model in CSS, and what are its components?",
-                options: [
-                    "A way to create 3D effects with content, padding, and shadows",
-                    "Margin, border, padding, and content areas that make up an element",
-                    "A system for organizing CSS properties alphabetically",
-                    "A deprecated layout method from CSS1"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! The CSS box model consists of content, padding, border, and margin areas that combine to form the total space an element occupies."
-            },
-            {
-                question: "How can you center a &lt;div&gt; both vertically and horizontally using Flexbox?",
-                options: [
-                    "display: flex; align-items: center; margin: auto;",
-                    "display: flex; justify-content: center; align-items: center;",
-                    "display: flex; center: both;",
-                    "display: flex; position: center;"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! Using display: flex with both justify-content: center and align-items: center will center a div both vertically and horizontally within its container."
-            },
-            {
-                question: "What is the difference between em, rem, %, and px units in CSS?",
-                options: [
-                    "em is relative to parent, rem to root, % to container, px is absolute",
-                    "They are all absolute units with different names",
-                    "em and rem are for fonts only, % and px for layout",
-                    "px is relative while others are absolute"
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
                 ],
                 correctAnswer: 0,
-                explanation: "✅ Correct! em is relative to the element's font-size, rem to the root font-size, % to the parent element's property, and px is an absolute pixel value."
+                explanation: "✅ Correct! The 'enqueue' operation in a queue takes constant time, O(1)."
             },
             {
-                question: "How does specificity work in CSS? Which rule will apply if multiple selectors match?",
+                question: "What is the time complexity of the 'dequeue' operation in a queue?",
                 options: [
-                    "The rule that appears last in the stylesheet wins",
-                    "The selector with the highest specificity value wins",
-                    "The rule with the most properties wins",
-                    "The rule with the shortest selector wins"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! CSS specificity determines which rules apply when multiple selectors match an element. The selector with the highest specificity value wins (ID > class > element)."
-            },
-            {
-                question: "What is the difference between inline, block, and inline-block elements?",
-                options: [
-                    "Inline flows with text, block starts new line, inline-block flows but allows dimensions",
-                    "They are all the same but with different default margins",
-                    "Inline is for text, block for images, inline-block for forms",
-                    "Block is deprecated in favor of inline-block"
+                    "O(1)",
+                    "O(n)",
+                    "O(log n)",
+                    "O(n^2)"
                 ],
                 correctAnswer: 0,
-                explanation: "✅ Correct! Inline elements flow with text content, block elements start on a new line and take full width, and inline-block elements flow like inline but can have dimensions set."
+                explanation: "✅ Correct! The 'dequeue' operation in a queue takes constant time, O(1)."
             },
             {
-                question: "How do min-width, max-width, and width properties work together?",
+                question: "What is the purpose of the 'peek' operation in a queue?",
                 options: [
-                    "They conflict and the last one declared wins",
-                    "min-width sets minimum, max-width sets maximum, width sets preferred within those bounds",
-                    "They must all be the same value to work properly",
-                    "min-width and max-width override width completely"
+                    "To add an element to the queue",
+                    "To remove an element from the queue",
+                    "To view the front element of the queue without removing it",
+                    "To check if the queue is empty"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'peek' operation in a queue is used to view the front element of the queue without removing it."
+            },
+            {
+                question: "What happens if you try to 'dequeue' an element from an empty queue?",
+                options: [
+                    "It returns the last element",
+                    "It throws an error",
+                    "It returns null",
+                    "It adds a new element"
                 ],
                 correctAnswer: 1,
-                explanation: "✅ Correct! min-width sets the minimum size, max-width the maximum, and width sets the preferred size that will be constrained by the min/max values."
+                explanation: "✅ Correct! Trying to 'dequeue' an element from an empty queue typically throws an error."
             },
             {
-                question: "What is the difference between visibility: hidden; and display: none;?",
+                question: "What is a circular queue?",
                 options: [
-                    "hidden removes from flow, none just makes invisible",
-                    "none removes from flow, hidden just makes invisible but maintains space",
-                    "They are identical in modern browsers",
-                    "hidden works only on block elements, none works on all"
+                    "A queue that can only hold a fixed number of elements",
+                    "A queue where the last element points to the first element",
+                    "A queue that allows random access to elements",
+                    "A queue that stores key-value pairs"
                 ],
                 correctAnswer: 1,
-                explanation: "✅ Correct! display: none removes the element from the document flow completely, while visibility: hidden makes it invisible but maintains its space in the layout."
+                explanation: "✅ Correct! A circular queue is a queue where the last element points to the first element."
             },
             {
-                question: "What is a pseudo-class in CSS? Give examples.",
+                question: "What is the main advantage of a circular queue over a linear queue?",
                 options: [
-                    "A class that's automatically added by JavaScript (:js-class)",
-                    "A keyword added to selectors that specifies a special state (:hover, :focus)",
-                    "A deprecated feature from CSS1 (:old-class)",
-                    "A way to create new HTML elements (:element)"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! Pseudo-classes are keywords added to selectors that specify a special state (e.g., :hover, :focus, :first-child, :nth-child())."
-            },
-            {
-                question: "How do media queries work in responsive design? Write a basic example.",
-                options: [
-                    "@media (max-width: 600px) { /* styles */ }",
-                    "<media query='600px'>/* styles */</media>",
-                    "media-query: 600px; /* styles */",
-                    "@responsive (600px) { /* styles */ }"
+                    "Better space utilization",
+                    "Faster enqueue operation",
+                    "Faster dequeue operation",
+                    "Easier implementation"
                 ],
                 correctAnswer: 0,
-                explanation: "✅ Correct! Media queries use @media rules with conditions like max-width to apply styles when those conditions are met, enabling responsive designs."
+                explanation: "✅ Correct! The main advantage of a circular queue over a linear queue is better space utilization."
+            },
+            {
+                question: "What is a deque?",
+                options: [
+                    "A queue that allows adding and removing elements from both ends",
+                    "A queue that allows random access to elements",
+                    "A queue that stores key-value pairs",
+                    "A queue that follows the LIFO principle"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A deque is a queue that allows adding and removing elements from both ends."
+            },
+            {
+                question: "What is the purpose of the 'isEmpty' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To add an element to the queue",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The 'isEmpty' method in a queue is used to check if the queue is empty."
+            },
+            {
+                question: "What is the purpose of the 'size' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To return the number of elements in the queue",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'size' method in a queue is used to return the number of elements in the queue."
+            },
+            {
+                question: "What is a priority queue?",
+                options: [
+                    "A queue where elements are processed in the order they were added",
+                    "A queue where elements are processed based on priority",
+                    "A queue that allows random access to elements",
+                    "A queue that stores key-value pairs"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A priority queue is a queue where elements are processed based on priority."
+            },
+            {
+                question: "What is the purpose of the 'clear' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To remove all elements from the queue",
+                    "To add an element to the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'clear' method in a queue is used to remove all elements from the queue."
+            },
+            {
+                question: "What is the purpose of the 'contains' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To check if a specific element is in the queue",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'contains' method in a queue is used to check if a specific element is in the queue."
+            },
+            {
+                question: "What is the purpose of the 'toArray' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To return all elements in the queue as an array",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'toArray' method in a queue is used to return all elements in the queue as an array."
+            },
+            {
+                question: "What is the purpose of the 'capacity' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To return the maximum number of elements the queue can hold",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'capacity' method in a queue is used to return the maximum number of elements the queue can hold."
+            },
+            {
+                question: "What is the purpose of the 'resize' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To change the maximum number of elements the queue can hold",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'resize' method in a queue is used to change the maximum number of elements the queue can hold."
+            },
+            {
+                question: "What is the purpose of the 'iterator' method in a queue?",
+                options: [
+                    "To check if the queue is full",
+                    "To check if the queue is empty",
+                    "To provide a way to iterate over the elements in the queue",
+                    "To remove an element from the queue"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The 'iterator' method in a queue is used to provide a way to iterate over the elements in the queue."
+            },
+            {
+                question: "What is a common use case for a queue?",
+                options: [
+                    "Managing a stack of tasks",
+                    "Implementing a priority queue",
+                    "Function call management in recursion",
+                    "Order processing in a print queue"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! A common use case for a queue is order processing in a print queue."
+            },
+            {
+                question: "What is the front of the queue?",
+                options: [
+                    "The first element added to the queue",
+                    "The last element added to the queue",
+                    "The middle element of the queue",
+                    "The element with the highest value"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! The front of the queue is the first element added to the queue."
+            },
+            {
+                question: "What is the rear of the queue?",
+                options: [
+                    "The first element added to the queue",
+                    "The last element added to the queue",
+                    "The middle element of the queue",
+                    "The element with the highest value"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The rear of the queue is the last element added to the queue."
+            },
+            {
+                question: "What is a queue overflow?",
+                options: [
+                    "A condition where the queue is full",
+                    "A condition where the queue is empty",
+                    "A condition where the queue has only one element",
+                    "A condition where the queue has duplicate elements"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A queue overflow is a condition where the queue is full."
+            },
+            {
+                question: "What is a queue underflow?",
+                options: [
+                    "A condition where the queue is full",
+                    "A condition where the queue is empty",
+                    "A condition where the queue has only one element",
+                    "A condition where the queue has duplicate elements"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A queue underflow is a condition where the queue is empty."
+            },
+            {
+                question: "What is the main advantage of using a queue?",
+                options: [
+                    "Easy access to any element",
+                    "Dynamic size",
+                    "Efficient memory usage",
+                    "Simple implementation of order processing"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! The main advantage of using a queue is the simple implementation of order processing."
+            },
+            {
+                question: "What is the purpose of the 'enqueue' operation in a queue?",
+                options: [
+                    "To add an element to the queue",
+                    "To remove an element from the queue",
+                    "To view the front element of the queue without removing it",
+                    "To check if the queue is empty"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! The 'enqueue' operation in a queue is used to add an element to the queue."
+            },
+            {
+                question: "What is the purpose of the 'dequeue' operation in a queue?",
+                options: [
+                    "To add an element to the queue",
+                    "To remove an element from the queue",
+                    "To view the front element of the queue without removing it",
+                    "To check if the queue is empty"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The 'dequeue' operation in a queue is used to remove an element from the queue."
             }
         ];
 
@@ -745,7 +886,7 @@
             questionNumberElement.textContent = currentQuestionIndex + 1;
             questionCountElement.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
             progressFillElement.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
-            
+
             optionsContainer.innerHTML = '';
             currentQuestion.options.forEach((option, index) => {
                 const optionElement = document.createElement('div');
@@ -758,10 +899,10 @@
                 optionElement.addEventListener('click', selectOption);
                 optionsContainer.appendChild(optionElement);
             });
-            
+
             correctFeedback.textContent = currentQuestion.explanation;
             incorrectFeedback.textContent = currentQuestion.explanation.replace('✅', '❌ Incorrect!');
-            
+
             // Hide feedback and reset next button
             correctFeedback.style.display = 'none';
             incorrectFeedback.style.display = 'none';
@@ -771,19 +912,19 @@
         // Handle option selection
         function selectOption(e) {
             const selectedOptionElement = e.currentTarget;
-            
+
             // If already selected, do nothing
             if (selectedOptionElement.classList.contains('selected')) return;
-            
+
             // Remove selection from other options
             document.querySelectorAll('.option').forEach(option => {
                 option.classList.remove('selected');
             });
-            
+
             // Select current option
             selectedOptionElement.classList.add('selected');
             selectedOption = selectedOptionElement;
-            
+
             // Show feedback
             const isCorrect = selectedOptionElement.dataset.correct === 'true';
             if (isCorrect) {
@@ -798,18 +939,18 @@
         // Handle next button click
         nextButton.addEventListener('click', () => {
             if (!selectedOption) return;
-            
+
             // Check answer and update score
             const isCorrect = selectedOption.dataset.correct === 'true';
             if (isCorrect) {
                 score++;
                 scoreElement.textContent = `Score: ${Math.round((score / questions.length) * 100)}%`;
             }
-            
+
             // Mark selected option as correct/incorrect
             selectedOption.classList.remove('selected');
             selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
-            
+
             // Show correct answer if wrong
             if (!isCorrect) {
                 document.querySelectorAll('.option').forEach(option => {
@@ -818,12 +959,12 @@
                     }
                 });
             }
-            
+
             // Disable all options
             document.querySelectorAll('.option').forEach(option => {
                 option.style.pointerEvents = 'none';
             });
-            
+
             // Prepare for next question or show results
             setTimeout(() => {
                 if (currentQuestionIndex < questions.length - 1) {
@@ -840,7 +981,7 @@
         function showResults() {
             quizContainer.style.display = 'none';
             resultContainer.style.display = 'block';
-            
+
             const percentage = Math.round((score / questions.length) * 100);
             resultScoreElement.textContent = `${percentage}%`;
             correctAnswersElement.textContent = score;
@@ -852,12 +993,12 @@
             currentQuestionIndex = 0;
             score = 0;
             selectedOption = null;
-            
+
             // Reset UI elements
             scoreElement.textContent = "Score: 0%";
             resultContainer.style.display = 'none';
             quizContainer.style.display = 'block';
-            
+
             // Reload first question
             loadQuestion();
         }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Medium Quiz | QuizMaster</title>
+    <title>C Programming Structures Quiz (Easy) | QuizMaster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,71 +15,71 @@
             --success-color: #4bb543;
             --error-color: #f44336;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fb;
             color: var(--dark-color);
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 20px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 28px;
             font-weight: 700;
             display: flex;
             align-items: center;
         }
-        
+
         .logo i {
             margin-right: 10px;
             color: var(--accent-color);
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .nav-links a:hover {
             color: var(--accent-color);
         }
-        
+
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -93,22 +93,22 @@
             cursor: pointer;
             font-size: 16px;
         }
-        
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
         }
-        
+
         .btn-outline:hover {
             background-color: white;
             color: var(--primary-color);
         }
-        
+
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -118,32 +118,32 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn i {
             margin-right: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn:hover {
             color: var(--secondary-color);
         }
-        
+
         .back-btn:hover i {
             transform: translateX(-5px);
         }
-        
+
         .quiz-header {
             text-align: center;
             margin-bottom: 50px;
             padding-top: 40px;
         }
-        
+
         .quiz-header h1 {
             font-size: 42px;
             color: var(--primary-color);
             margin-bottom: 15px;
         }
-        
+
         .quiz-header .difficulty-badge {
             display: inline-block;
             padding: 5px 15px;
@@ -151,19 +151,19 @@
             font-weight: 600;
             margin-bottom: 15px;
         }
-        
-        .medium-badge {
-            background-color: rgba(255, 193, 7, 0.2);
-            color: #ff9800;
+
+        .easy-badge {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--success-color);
         }
-        
+
         .quiz-header p {
             color: #666;
             font-size: 18px;
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         .quiz-container {
             background-color: white;
             border-radius: 10px;
@@ -172,14 +172,14 @@
             max-width: 800px;
             margin: 0 auto 80px;
         }
-        
+
         .quiz-progress {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
-        
+
         .progress-bar {
             height: 8px;
             background-color: #e0e0e0;
@@ -188,23 +188,23 @@
             margin: 0 20px;
             overflow: hidden;
         }
-        
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             width: 0%;
             transition: width 0.3s ease;
         }
-        
+
         .question-count {
             font-weight: 600;
             color: var(--primary-color);
         }
-        
+
         .question-card {
             margin-bottom: 40px;
         }
-        
+
         .question-text {
             font-size: 22px;
             margin-bottom: 25px;
@@ -212,17 +212,17 @@
             display: flex;
             align-items: flex-start;
         }
-        
+
         .question-number {
             margin-right: 10px;
             color: var(--primary-color);
         }
-        
+
         .options-container {
             display: grid;
             gap: 15px;
         }
-        
+
         .option {
             padding: 15px 20px;
             border: 2px solid #e0e0e0;
@@ -232,27 +232,27 @@
             display: flex;
             align-items: center;
         }
-        
+
         .option:hover {
             border-color: var(--accent-color);
             background-color: rgba(76, 201, 240, 0.05);
         }
-        
+
         .option.selected {
             border-color: var(--primary-color);
             background-color: rgba(67, 97, 238, 0.05);
         }
-        
+
         .option.correct {
             border-color: var(--success-color);
             background-color: rgba(76, 175, 80, 0.1);
         }
-        
+
         .option.incorrect {
             border-color: var(--error-color);
             background-color: rgba(244, 67, 54, 0.1);
         }
-        
+
         .option-letter {
             display: inline-block;
             width: 30px;
@@ -265,108 +265,108 @@
             font-weight: 600;
             flex-shrink: 0;
         }
-        
+
         .selected .option-letter {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         .correct .option-letter {
             background-color: var(--success-color);
             color: white;
         }
-        
+
         .incorrect .option-letter {
             background-color: var(--error-color);
             color: white;
         }
-        
+
         .feedback {
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
             display: none;
         }
-        
+
         .correct-feedback {
             background-color: rgba(76, 175, 80, 0.1);
             color: var(--success-color);
             border-left: 4px solid var(--success-color);
         }
-        
+
         .incorrect-feedback {
             background-color: rgba(244, 67, 54, 0.1);
             color: var(--error-color);
             border-left: 4px solid var(--error-color);
         }
-        
+
         .quiz-footer {
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
         }
-        
+
         .next-btn {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         .next-btn:hover {
             background-color: var(--secondary-color);
         }
-        
+
         .finish-btn {
             background-color: var(--success-color);
             color: white;
         }
-        
+
         .finish-btn:hover {
             background-color: #3da73d;
         }
-        
+
         .result-container {
             text-align: center;
             display: none;
         }
-        
+
         .result-icon {
             font-size: 80px;
             color: var(--success-color);
             margin-bottom: 20px;
         }
-        
+
         .score-text {
             font-size: 24px;
             margin-bottom: 20px;
         }
-        
+
         .score-value {
             font-size: 48px;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 30px;
         }
-        
+
         footer {
             background-color: var(--dark-color);
             color: white;
             padding: 50px 0 20px;
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
             margin-bottom: 40px;
         }
-        
+
         .footer-column h3 {
             font-size: 20px;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-column h3::after {
             content: '';
             position: absolute;
@@ -376,32 +376,32 @@
             height: 2px;
             background-color: var(--accent-color);
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 10px;
         }
-        
+
         .footer-links a {
             color: #aaa;
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .footer-links a:hover {
             color: white;
             padding-left: 5px;
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social-links a {
             display: flex;
             align-items: center;
@@ -413,12 +413,12 @@
             color: white;
             transition: all 0.3s ease;
         }
-        
+
         .social-links a:hover {
             background-color: var(--accent-color);
             transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
@@ -426,29 +426,29 @@
             color: #aaa;
             font-size: 14px;
         }
-        
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
+
             .quiz-header h1 {
                 font-size: 32px;
             }
-            
+
             .question-text {
                 font-size: 18px;
             }
-            
+
             .quiz-container {
                 padding: 20px;
             }
-            
+
             .quiz-footer {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .btn {
                 width: 100%;
             }
@@ -468,72 +468,71 @@
                     <li><a href="homepage.html#categories">Categories</a></li>
                     <li><a href="homepage.html#features">Features</a></li>
                     <li><a href="homepage.html#testimonials">Testimonials</a></li>
-                    
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <a href="webdevloppage.html" class="back-btn">
+        <a href="cprogrammingpage.html" class="back-btn">
             <i class="fas fa-arrow-left"></i>
-            Back to Web Development Quizzes
+            Back to C Programming Quizzes
         </a>
-        
+
         <div class="quiz-header">
-            <div class="difficulty-badge medium-badge">Medium Level</div>
-            <h1>CSS Intermediate Quiz</h1>
-            <p>Test your intermediate CSS knowledge with these challenging questions</p>
+            <div class="difficulty-badge easy-badge">Easy Level</div>
+            <h1>C Programming Structures Quiz (Easy)</h1>
+            <p>Test your basic knowledge of structures in C programming with these easy-level questions.</p>
         </div>
-        
+
         <div class="quiz-container">
             <div class="quiz-progress">
-                <span class="question-count">Question 1 of 10</span>
+                <span class="question-count">Question 1 of 20</span>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width: 10%"></div>
+                    <div class="progress-fill" style="width: 5%"></div>
                 </div>
                 <span class="score">Score: 0%</span>
             </div>
-            
+
             <div class="question-card">
                 <div class="question-text">
                     <span class="question-number">1.</span>
-                    <span class="question">What is the difference between relative, absolute, and fixed positioning in CSS?</span>
+                    <span class="question">What is a structure in C?</span>
                 </div>
-                
+
                 <div class="options-container">
                     <div class="option" data-correct="false">
                         <span class="option-letter">A</span>
-                        <span class="option-text">They all work the same way but with different performance characteristics</span>
+                        <span class="option-text">A predefined data type</span>
                     </div>
                     <div class="option" data-correct="true">
                         <span class="option-letter">B</span>
-                        <span class="option-text">Relative positions relative to itself, absolute to nearest positioned ancestor, fixed to viewport</span>
+                        <span class="option-text">A user-defined data type that groups related variables</span>
                     </div>
                     <div class="option" data-correct="false">
                         <span class="option-letter">C</span>
-                        <span class="option-text">Relative is for text, absolute for images, fixed for backgrounds</span>
+                        <span class="option-text">A function</span>
                     </div>
                     <div class="option" data-correct="false">
                         <span class="option-letter">D</span>
-                        <span class="option-text">They are all deprecated in CSS3</span>
+                        <span class="option-text">A loop</span>
                     </div>
                 </div>
-                
+
                 <div class="feedback correct-feedback">
-                    ✅ Correct! Relative positions relative to itself, absolute positions relative to nearest positioned ancestor (or document if none), and fixed positions relative to the viewport.
+                    ✅ Correct! A structure in C is a user-defined data type that groups related variables.
                 </div>
-                
+
                 <div class="feedback incorrect-feedback">
-                    ❌ Incorrect! The correct answer is B) Relative positions relative to itself, absolute to nearest positioned ancestor, fixed to viewport. These positioning schemes behave differently in the document flow.
+                    ❌ Incorrect! The correct answer is B) A user-defined data type that groups related variables.
                 </div>
             </div>
-            
+
             <div class="quiz-footer">
                 <button class="btn next-btn">Next Question</button>
             </div>
         </div>
-        
+
         <div class="quiz-container result-container">
             <div class="result-icon">
                 <i class="fas fa-trophy"></i>
@@ -541,13 +540,13 @@
             <h2>Quiz Completed!</h2>
             <div class="score-text">Your Score:</div>
             <div class="score-value">0%</div>
-            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">10</span> questions correctly</p>
-            
+            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">20</span> questions correctly</p>
+
             <div class="quiz-footer" style="justify-content: center;">
                 <button id="try-again-btn" class="btn" style="margin-right: 15px;">
                     <i class="fas fa-redo"></i> Try Again
                 </button>
-                <a href="webdevloppage.html" class="btn">
+                <a href="cprogrammingpage.html" class="btn">
                     <i class="fas fa-list"></i> Back to Quizzes
                 </a>
             </div>
@@ -578,12 +577,15 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Web Development</h3>
+                    <h3>C Programming</h3>
                     <ul class="footer-links">
-                        <li><a href="html-easy-quiz.html">HTML Quizzes</a></li>
-                        <li><a href="css-easy-quiz.html">CSS Quizzes</a></li>
-                        <li><a href="javascript-easy-quiz.html">JavaScript Quizzes</a></li>
-                        <li><a href="react-easy-quiz.html">React Quizzes</a></li>
+                        <li><a href="introduction_c(easy).html">Introduction Quizzes</a></li>
+                        <li><a href="if_statements_c(easy).html">If Statements Quizzes</a></li>
+                        <li><a href="loops_c(easy).html">Loops Quizzes</a></li>
+                        <li><a href="arrays_c(easy).html">Arrays Quizzes</a></li>
+                        <li><a href="structures_c(easy).html">Structures Quizzes</a></li>
+                        <li><a href="functions_c(easy).html">Functions Quizzes</a></li>
+                        <li><a href="files_c(easy).html">Files Quizzes</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -605,114 +607,246 @@
         // Quiz questions data
         const questions = [
             {
-                question: "What is the difference between relative, absolute, and fixed positioning in CSS?",
+                question: "What is a structure in C?",
                 options: [
-                    "They all work the same way but with different performance characteristics",
-                    "Relative positions relative to itself, absolute to nearest positioned ancestor, fixed to viewport",
-                    "Relative is for text, absolute for images, fixed for backgrounds",
-                    "They are all deprecated in CSS3"
+                    "A predefined data type",
+                    "A user-defined data type that groups related variables",
+                    "A function",
+                    "A loop"
                 ],
                 correctAnswer: 1,
-                explanation: "✅ Correct! Relative positions relative to itself, absolute positions relative to nearest positioned ancestor (or document if none), and fixed positions relative to the viewport."
+                explanation: "✅ Correct! A structure in C is a user-defined data type that groups related variables."
             },
             {
-                question: "What is the box model in CSS, and what are its components?",
+                question: "How do you define a structure in C?",
                 options: [
-                    "A way to create 3D effects with content, padding, and shadows",
-                    "Margin, border, padding, and content areas that make up an element",
-                    "A system for organizing CSS properties alphabetically",
-                    "A deprecated layout method from CSS1"
+                    "struct { ... };",
+                    "structure { ... };",
+                    "define { ... };",
+                    "struct name { ... };"
                 ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! The CSS box model consists of content, padding, border, and margin areas that combine to form the total space an element occupies."
+                correctAnswer: 3,
+                explanation: "✅ Correct! You define a structure in C using the syntax: struct name { ... };"
             },
             {
-                question: "How can you center a &lt;div&gt; both vertically and horizontally using Flexbox?",
+                question: "What is the correct way to declare a variable of a structure type?",
                 options: [
-                    "display: flex; align-items: center; margin: auto;",
-                    "display: flex; justify-content: center; align-items: center;",
-                    "display: flex; center: both;",
-                    "display: flex; position: center;"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! Using display: flex with both justify-content: center and align-items: center will center a div both vertically and horizontally within its container."
-            },
-            {
-                question: "What is the difference between em, rem, %, and px units in CSS?",
-                options: [
-                    "em is relative to parent, rem to root, % to container, px is absolute",
-                    "They are all absolute units with different names",
-                    "em and rem are for fonts only, % and px for layout",
-                    "px is relative while others are absolute"
+                    "struct name variable;",
+                    "name variable;",
+                    "struct variable name;",
+                    "variable struct name;"
                 ],
                 correctAnswer: 0,
-                explanation: "✅ Correct! em is relative to the element's font-size, rem to the root font-size, % to the parent element's property, and px is an absolute pixel value."
+                explanation: "✅ Correct! The correct way to declare a variable of a structure type is: struct name variable;"
             },
             {
-                question: "How does specificity work in CSS? Which rule will apply if multiple selectors match?",
+                question: "How do you access the members of a structure?",
                 options: [
-                    "The rule that appears last in the stylesheet wins",
-                    "The selector with the highest specificity value wins",
-                    "The rule with the most properties wins",
-                    "The rule with the shortest selector wins"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! CSS specificity determines which rules apply when multiple selectors match an element. The selector with the highest specificity value wins (ID > class > element)."
-            },
-            {
-                question: "What is the difference between inline, block, and inline-block elements?",
-                options: [
-                    "Inline flows with text, block starts new line, inline-block flows but allows dimensions",
-                    "They are all the same but with different default margins",
-                    "Inline is for text, block for images, inline-block for forms",
-                    "Block is deprecated in favor of inline-block"
+                    "Using the dot (.) operator",
+                    "Using the arrow (->) operator",
+                    "Using the colon (:) operator",
+                    "Using the double colon (::) operator"
                 ],
                 correctAnswer: 0,
-                explanation: "✅ Correct! Inline elements flow with text content, block elements start on a new line and take full width, and inline-block elements flow like inline but can have dimensions set."
+                explanation: "✅ Correct! You access the members of a structure using the dot (.) operator."
             },
             {
-                question: "How do min-width, max-width, and width properties work together?",
+                question: "What is the purpose of the 'typedef' keyword with structures?",
                 options: [
-                    "They conflict and the last one declared wins",
-                    "min-width sets minimum, max-width sets maximum, width sets preferred within those bounds",
-                    "They must all be the same value to work properly",
-                    "min-width and max-width override width completely"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! min-width sets the minimum size, max-width the maximum, and width sets the preferred size that will be constrained by the min/max values."
-            },
-            {
-                question: "What is the difference between visibility: hidden; and display: none;?",
-                options: [
-                    "hidden removes from flow, none just makes invisible",
-                    "none removes from flow, hidden just makes invisible but maintains space",
-                    "They are identical in modern browsers",
-                    "hidden works only on block elements, none works on all"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! display: none removes the element from the document flow completely, while visibility: hidden makes it invisible but maintains its space in the layout."
-            },
-            {
-                question: "What is a pseudo-class in CSS? Give examples.",
-                options: [
-                    "A class that's automatically added by JavaScript (:js-class)",
-                    "A keyword added to selectors that specifies a special state (:hover, :focus)",
-                    "A deprecated feature from CSS1 (:old-class)",
-                    "A way to create new HTML elements (:element)"
-                ],
-                correctAnswer: 1,
-                explanation: "✅ Correct! Pseudo-classes are keywords added to selectors that specify a special state (e.g., :hover, :focus, :first-child, :nth-child())."
-            },
-            {
-                question: "How do media queries work in responsive design? Write a basic example.",
-                options: [
-                    "@media (max-width: 600px) { /* styles */ }",
-                    "<media query='600px'>/* styles */</media>",
-                    "media-query: 600px; /* styles */",
-                    "@responsive (600px) { /* styles */ }"
+                    "To define a new data type",
+                    "To create a function",
+                    "To declare a variable",
+                    "To initialize a structure"
                 ],
                 correctAnswer: 0,
-                explanation: "✅ Correct! Media queries use @media rules with conditions like max-width to apply styles when those conditions are met, enabling responsive designs."
+                explanation: "✅ Correct! The 'typedef' keyword is used to define a new data type for structures."
+            },
+            {
+                question: "How do you initialize a structure variable at the time of declaration?",
+                options: [
+                    "struct name variable = {value1, value2, ...};",
+                    "struct name variable = (value1, value2, ...);",
+                    "struct name variable = [value1, value2, ...];",
+                    "struct name variable = value1, value2, ...;"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! You initialize a structure variable at the time of declaration using: struct name variable = {value1, value2, ...};"
+            },
+            {
+                question: "What is the correct way to pass a structure to a function?",
+                options: [
+                    "By value",
+                    "By reference",
+                    "By pointer",
+                    "Both by value and by reference"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! You can pass a structure to a function both by value and by reference."
+            },
+            {
+                question: "How do you access the members of a structure using a pointer?",
+                options: [
+                    "Using the dot (.) operator",
+                    "Using the arrow (->) operator",
+                    "Using the colon (:) operator",
+                    "Using the double colon (::) operator"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! You access the members of a structure using a pointer with the arrow (->) operator."
+            },
+            {
+                question: "What is a nested structure in C?",
+                options: [
+                    "A structure within another structure",
+                    "A structure within a function",
+                    "A structure within a loop",
+                    "A structure within an array"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A nested structure in C is a structure within another structure."
+            },
+            {
+                question: "How do you declare a nested structure in C?",
+                options: [
+                    "struct name { struct innerName { ... }; ... };",
+                    "struct name { struct innerName; ... };",
+                    "struct name { innerName { ... }; ... };",
+                    "struct name { innerName; ... };"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! You declare a nested structure in C using: struct name { struct innerName { ... }; ... };"
+            },
+            {
+                question: "What is the size of an empty structure in C?",
+                options: [
+                    "0 bytes",
+                    "1 byte",
+                    "2 bytes",
+                    "4 bytes"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The size of an empty structure in C is 1 byte."
+            },
+            {
+                question: "How do you declare an array of structures in C?",
+                options: [
+                    "struct name array[size];",
+                    "struct name[size];",
+                    "struct array[size] name;",
+                    "struct [size] name array;"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! You declare an array of structures in C using: struct name array[size];"
+            },
+            {
+                question: "What is the correct way to initialize an array of structures in C?",
+                options: [
+                    "struct name array[size] = {{value1, value2, ...}, {value1, value2, ...}, ...};",
+                    "struct name array[size] = {(value1, value2, ...), (value1, value2, ...), ...};",
+                    "struct name array[size] = [(value1, value2, ...), (value1, value2, ...), ...];",
+                    "struct name array[size] = (value1, value2, ...), (value1, value2, ...), ...;"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! You initialize an array of structures in C using: struct name array[size] = {{value1, value2, ...}, {value1, value2, ...}, ...};"
+            },
+            {
+                question: "What is the purpose of the 'sizeof' operator with structures?",
+                options: [
+                    "To determine the size of the structure",
+                    "To initialize the structure",
+                    "To declare a variable of the structure type",
+                    "To define a new data type"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! The 'sizeof' operator is used to determine the size of the structure."
+            },
+            {
+                question: "How do you copy the contents of one structure to another in C?",
+                options: [
+                    "Using the assignment (=) operator",
+                    "Using the memcpy function",
+                    "Using the strcpy function",
+                    "Using the copy function"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! You copy the contents of one structure to another in C using the assignment (=) operator."
+            },
+            {
+                question: "What is the correct way to compare two structures in C?",
+                options: [
+                    "Using the == operator",
+                    "Using the strcmp function",
+                    "Using the memcmp function",
+                    "Using the compare function"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! You compare two structures in C using the memcmp function."
+            },
+            {
+                question: "What is a union in C?",
+                options: [
+                    "A user-defined data type that groups related variables",
+                    "A user-defined data type that can hold different data types in the same memory location",
+                    "A function",
+                    "A loop"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A union in C is a user-defined data type that can hold different data types in the same memory location."
+            },
+            {
+                question: "How do you define a union in C?",
+                options: [
+                    "union { ... };",
+                    "union name { ... };",
+                    "define { ... };",
+                    "union name { ... } variable;"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! You define a union in C using the syntax: union name { ... } variable;"
+            },
+            {
+                question: "What is the size of a union in C?",
+                options: [
+                    "The sum of the sizes of all its members",
+                    "The size of its largest member",
+                    "The size of its smallest member",
+                    "1 byte"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The size of a union in C is the size of its largest member."
+            },
+            {
+                question: "How do you access the members of a union?",
+                options: [
+                    "Using the dot (.) operator",
+                    "Using the arrow (->) operator",
+                    "Using the colon (:) operator",
+                    "Using the double colon (::) operator"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! You access the members of a union using the dot (.) operator."
+            },
+            {
+                question: "What is the purpose of the 'enum' keyword in C?",
+                options: [
+                    "To define a new data type with named integer constants",
+                    "To create a function",
+                    "To declare a variable",
+                    "To initialize a structure"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! The 'enum' keyword is used to define a new data type with named integer constants."
+            },
+            {
+                question: "How do you define an enumeration in C?",
+                options: [
+                    "enum { ... };",
+                    "enum name { ... };",
+                    "define { ... };",
+                    "enum name { ... } variable;"
+                ],
+                correctAnswer: 3,
+                explanation: "✅ Correct! You define an enumeration in C using the syntax: enum name { ... } variable;"
             }
         ];
 
@@ -745,7 +879,7 @@
             questionNumberElement.textContent = currentQuestionIndex + 1;
             questionCountElement.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
             progressFillElement.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
-            
+
             optionsContainer.innerHTML = '';
             currentQuestion.options.forEach((option, index) => {
                 const optionElement = document.createElement('div');
@@ -758,10 +892,10 @@
                 optionElement.addEventListener('click', selectOption);
                 optionsContainer.appendChild(optionElement);
             });
-            
+
             correctFeedback.textContent = currentQuestion.explanation;
             incorrectFeedback.textContent = currentQuestion.explanation.replace('✅', '❌ Incorrect!');
-            
+
             // Hide feedback and reset next button
             correctFeedback.style.display = 'none';
             incorrectFeedback.style.display = 'none';
@@ -771,19 +905,19 @@
         // Handle option selection
         function selectOption(e) {
             const selectedOptionElement = e.currentTarget;
-            
+
             // If already selected, do nothing
             if (selectedOptionElement.classList.contains('selected')) return;
-            
+
             // Remove selection from other options
             document.querySelectorAll('.option').forEach(option => {
                 option.classList.remove('selected');
             });
-            
+
             // Select current option
             selectedOptionElement.classList.add('selected');
             selectedOption = selectedOptionElement;
-            
+
             // Show feedback
             const isCorrect = selectedOptionElement.dataset.correct === 'true';
             if (isCorrect) {
@@ -798,18 +932,18 @@
         // Handle next button click
         nextButton.addEventListener('click', () => {
             if (!selectedOption) return;
-            
+
             // Check answer and update score
             const isCorrect = selectedOption.dataset.correct === 'true';
             if (isCorrect) {
                 score++;
                 scoreElement.textContent = `Score: ${Math.round((score / questions.length) * 100)}%`;
             }
-            
+
             // Mark selected option as correct/incorrect
             selectedOption.classList.remove('selected');
             selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
-            
+
             // Show correct answer if wrong
             if (!isCorrect) {
                 document.querySelectorAll('.option').forEach(option => {
@@ -818,12 +952,12 @@
                     }
                 });
             }
-            
+
             // Disable all options
             document.querySelectorAll('.option').forEach(option => {
                 option.style.pointerEvents = 'none';
             });
-            
+
             // Prepare for next question or show results
             setTimeout(() => {
                 if (currentQuestionIndex < questions.length - 1) {
@@ -840,7 +974,7 @@
         function showResults() {
             quizContainer.style.display = 'none';
             resultContainer.style.display = 'block';
-            
+
             const percentage = Math.round((score / questions.length) * 100);
             resultScoreElement.textContent = `${percentage}%`;
             correctAnswersElement.textContent = score;
@@ -852,12 +986,12 @@
             currentQuestionIndex = 0;
             score = 0;
             selectedOption = null;
-            
+
             // Reset UI elements
             scoreElement.textContent = "Score: 0%";
             resultContainer.style.display = 'none';
             quizContainer.style.display = 'block';
-            
+
             // Reload first question
             loadQuestion();
         }

@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Quizzes | QuizMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --easy-color: #4caf50;
+            --medium-color: #ff9800;
+            --hard-color: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
+        }
+
+        .quiz-header h1 {
+            font-size: 42px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .quiz-header p {
+            color: #666;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .concept-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .concept-card:hover::before {
+            opacity: 1;
+        }
+
+        .concept-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 36px;
+        }
+
+        .concept-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .concept-card p {
+            color: #666;
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+
+        .difficulty-levels {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+            display: none;
+        }
+
+        .difficulty-levels h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .difficulty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .difficulty-card {
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .difficulty-card.easy {
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 2px solid var(--easy-color);
+        }
+
+        .difficulty-card.medium {
+            background-color: rgba(255, 152, 0, 0.1);
+            border: 2px solid var(--medium-color);
+        }
+
+        .difficulty-card.hard {
+            background-color: rgba(244, 67, 54, 0.1);
+            border: 2px solid var(--hard-color);
+        }
+
+        .difficulty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .difficulty-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-card.easy .difficulty-icon {
+            color: var(--easy-color);
+        }
+
+        .difficulty-card.medium .difficulty-icon {
+            color: var(--medium-color);
+        }
+
+        .difficulty-card.hard .difficulty-icon {
+            color: var(--hard-color);
+        }
+
+        .difficulty-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .difficulty-card.easy h3 {
+            color: var(--easy-color);
+        }
+
+        .difficulty-card.medium h3 {
+            color: var(--medium-color);
+        }
+
+        .difficulty-card.hard h3 {
+            color: var(--hard-color);
+        }
+
+        .difficulty-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .start-quiz-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .difficulty-card.easy .start-quiz-btn {
+            background-color: var(--easy-color);
+            color: white;
+        }
+
+        .difficulty-card.medium .start-quiz-btn {
+            background-color: var(--medium-color);
+            color: white;
+        }
+
+        .difficulty-card.hard .start-quiz-btn {
+            background-color: var(--hard-color);
+            color: white;
+        }
+
+        .start-quiz-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 15px 0 5px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .footer-column h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 25px;
+            height: 1px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 3px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .social-links a {
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 11px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .quiz-header h1 {
+                font-size: 32px;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .difficulty-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Add these new enhanced styles */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(67, 97, 238, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(67, 97, 238, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(67, 97, 238, 0.5); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shine {
+            from { background-position: -100% center; }
+            to { background-position: 200% center; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .logo {
+            animation: pulse 3s infinite;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .concept-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .concept-card:hover::before {
+            opacity: 1;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .concept-icon {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 4s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .concept-card:hover .concept-icon {
+            transform: scale(1.3) rotate(15deg);
+            animation: rotate 2s linear infinite;
+        }
+
+        .difficulty-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .difficulty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+        }
+
+        .difficulty-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .difficulty-card:hover {
+            transform: translateY(-15px) scale(1.08);
+            animation: glow 2s infinite;
+        }
+
+        .start-quiz-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .start-quiz-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+        }
+
+        .start-quiz-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .start-quiz-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+
+        .quiz-header h1 {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .quiz-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .quiz-header:hover h1::after {
+            width: 150px;
+        }
+
+        .social-links a {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+        }
+
+        .social-links a:hover::before {
+            transform: translateX(100%);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-10px) scale(1.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: bounce 1s infinite;
+        }
+
+        .footer-column {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+        }
+
+        .footer-column:hover::before {
+            transform: translateX(100%);
+        }
+
+        .footer-column:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeOut 1s ease-out forwards;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: rotate 1s linear infinite;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* Add responsive animations */
+        @media (max-width: 768px) {
+            .concept-card {
+                animation: slideIn 0.8s ease-out;
+            }
+
+            .difficulty-card {
+                animation: fadeIn 0.8s ease-out;
+            }
+
+            .quiz-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="homepage.html#categories">Categories</a></li>
+                    <li><a href="homepage.html#features">Features</a></li>
+                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="homepage.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Categories
+        </a>
+
+        <div class="quiz-header">
+            <h1>C Programming Quizzes</h1>
+            <p>Test your knowledge of C programming concepts. Select a topic to begin your quiz journey.</p>
+        </div>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h3>Introduction</h3>
+                <p>Basic concepts and syntax of C programming.</p>
+                <a href="#introduction-quiz" class="btn">Select Introduction</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <h3>If Statements</h3>
+                <p>Conditional statements and decision-making in C.</p>
+                <a href="#if-statements-quiz" class="btn">Select If Statements</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Loops</h3>
+                <p>Loops and iteration in C programming.</p>
+                <a href="#loops-quiz" class="btn">Select Loops</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-th-list"></i>
+                </div>
+                <h3>Arrays</h3>
+                <p>Arrays and their manipulation in C.</p>
+                <a href="#arrays-quiz" class="btn">Select Arrays</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <h3>Structures</h3>
+                <p>Structures and their usage in C programming.</p>
+                <a href="#structures-quiz" class="btn">Select Structures</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Functions</h3>
+                <p>Functions and their role in C programming.</p>
+                <a href="#functions-quiz" class="btn">Select Functions</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Files</h3>
+                <p>File handling and I/O operations in C.</p>
+                <a href="#files-quiz" class="btn">Select Files</a>
+            </div>
+        </div>
+
+        <!-- Introduction Quiz Difficulty Levels -->
+        <div id="introduction-quiz" class="difficulty-levels">
+            <h2>Introduction Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic syntax and structure of a C program.</p>
+                    <a href="c_introduction(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Variables, data types, and basic operators.</p>
+                    <a href="c_introduction(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced topics like pointers and memory management.</p>
+                    <a href="c_introduction(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- If Statements Quiz Difficulty Levels -->
+        <div id="if-statements-quiz" class="difficulty-levels">
+            <h2>If Statements Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic if-else statements and simple conditions.</p>
+                    <a href="c_ifstatements(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Nested if statements and logical operators.</p>
+                    <a href="c_ifstatement(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Switch statements and complex conditional logic.</p>
+                    <a href="c_ifstatement(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loops Quiz Difficulty Levels -->
+        <div id="loops-quiz" class="difficulty-levels">
+            <h2>Loops Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic for and while loops.</p>
+                    <a href="c_loops(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Nested loops and loop control statements.</p>
+                    <a href="c_loops(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced looping techniques and performance considerations.</p>
+                    <a href="c_loops(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrays Quiz Difficulty Levels -->
+        <div id="arrays-quiz" class="difficulty-levels">
+            <h2>Arrays Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic array declaration and initialization.</p>
+                    <a href="c_arrays(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Multi-dimensional arrays and array manipulation.</p>
+                    <a href="c_arrays(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Dynamic memory allocation and advanced array operations.</p>
+                    <a href="c_arrays(hard).htmll" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Structures Quiz Difficulty Levels -->
+        <div id="structures-quiz" class="difficulty-levels">
+            <h2>Structures Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic structure declaration and usage.</p>
+                    <a href="c_structures(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Nested structures and structure arrays.</p>
+                    <a href="c_structures(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Pointers to structures and dynamic memory allocation.</p>
+                    <a href="c_structures(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Functions Quiz Difficulty Levels -->
+        <div id="functions-quiz" class="difficulty-levels">
+            <h2>Functions Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic function declaration and calling.</p>
+                    <a href="c_functions(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Recursion and function pointers.</p>
+                    <a href="c_functions(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced function usage and optimization techniques.</p>
+                    <a href="c_function(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Files Quiz Difficulty Levels -->
+        <div id="files-quiz" class="difficulty-levels">
+            <h2>Files Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Basic file I/O operations.</p>
+                    <a href="c_files(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>File handling with structures and binary files.</p>
+                    <a href="c_files(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced file operations and error handling.</p>
+                    <a href="c_files(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="homepage.html#categories">Categories</a></li>
+                        <li><a href="homepage.html#features">Features</a></li>
+                        <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>C Programming</h3>
+                    <ul class="footer-links">
+                        <li><a href="#introduction-quiz">Introduction Quizzes</a></li>
+                        <li><a href="#if-statements-quiz">If Statements Quizzes</a></li>
+                        <li><a href="#loops-quiz">Loops Quizzes</a></li>
+                        <li><a href="#arrays-quiz">Arrays Quizzes</a></li>
+                        <li><a href="#structures-quiz">Structures Quizzes</a></li>
+                        <li><a href="#functions-quiz">Functions Quizzes</a></li>
+                        <li><a href="#files-quiz">Files Quizzes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@quizmaster.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Quiz Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add loading screen -->
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show only the selected quiz difficulty section
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all difficulty sections initially
+            const difficultySections = document.querySelectorAll('.difficulty-levels');
+            difficultySections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show section when concept is selected
+            const conceptLinks = document.querySelectorAll('.concept-card a');
+            conceptLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+
+                    // Hide all sections
+                    difficultySections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Show selected section
+                    document.querySelector(targetId).style.display = 'block';
+
+                    // Scroll to the section
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // If URL has hash, show that section
+            if(window.location.hash) {
+                const targetSection = document.querySelector(window.location.hash);
+                if(targetSection && targetSection.classList.contains('difficulty-levels')) {
+                    targetSection.style.display = 'block';
+                    setTimeout(() => {
+                        targetSection.scrollIntoView();
+                    }, 100);
+                }
+            }
+        });
+
+        // Animation on scroll
+        window.addEventListener('scroll', revealOnScroll);
+
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.concept-card');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementPosition < windowHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize elements with opacity 0 for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.concept-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+
+            // Trigger the animation after a small delay
+            setTimeout(revealOnScroll, 100);
+        });
+
+        // Add loading screen functionality
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading').style.animation = 'fadeOut 1s ease-out forwards';
+            }, 1000);
+        });
+
+        // Add scroll reveal animations
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.concept-card, .difficulty-card');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                const isVisible = (elementTop < window.innerHeight) && (elementBottom >= 0);
+                
+                if (isVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize elements with opacity 0 for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.concept-card, .difficulty-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+
+            // Trigger the animation after a small delay
+            setTimeout(function() {
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    const isVisible = (elementTop < window.innerHeight) && (elementBottom >= 0);
+                    
+                    if (isVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

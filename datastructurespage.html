@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Quizzes | QuizMaster</title>
+    <title>Data Structures in C | QuizMaster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -17,71 +17,71 @@
             --medium-color: #ff9800;
             --hard-color: #f44336;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fb;
             color: var(--dark-color);
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 20px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 28px;
             font-weight: 700;
             display: flex;
             align-items: center;
         }
-        
+
         .logo i {
             margin-right: 10px;
             color: var(--accent-color);
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .nav-links a:hover {
             color: var(--accent-color);
         }
-        
+
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -95,22 +95,22 @@
             cursor: pointer;
             font-size: 16px;
         }
-        
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
         }
-        
+
         .btn-outline:hover {
             background-color: white;
             color: var(--primary-color);
         }
-        
+
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -120,47 +120,47 @@
             margin-bottom: 30px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn i {
             margin-right: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn:hover {
             color: var(--secondary-color);
         }
-        
+
         .back-btn:hover i {
             transform: translateX(-5px);
         }
-        
+
         .quiz-header {
             text-align: center;
             margin-bottom: 50px;
             padding-top: 40px;
         }
-        
+
         .quiz-header h1 {
             font-size: 42px;
             color: var(--primary-color);
             margin-bottom: 15px;
         }
-        
+
         .quiz-header p {
             color: #666;
             font-size: 18px;
             max-width: 700px;
             margin: 0 auto;
         }
-        
-        .language-grid {
+
+        .concept-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 80px;
         }
-        
-        .language-card {
+
+        .concept-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
@@ -171,8 +171,8 @@
             position: relative;
             z-index: 1;
         }
-        
-        .language-card::before {
+
+        .concept-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -184,17 +184,17 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-        
-        .language-card:hover {
+
+        .concept-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
-        .language-card:hover::before {
+
+        .concept-card:hover::before {
             opacity: 1;
         }
-        
-        .language-icon {
+
+        .concept-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 20px;
@@ -206,19 +206,19 @@
             color: var(--primary-color);
             font-size: 36px;
         }
-        
-        .language-card h3 {
+
+        .concept-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
             color: var(--dark-color);
         }
-        
-        .language-card p {
+
+        .concept-card p {
             color: #666;
             margin-bottom: 20px;
             min-height: 60px;
         }
-        
+
         .difficulty-levels {
             background-color: white;
             border-radius: 10px;
@@ -229,85 +229,85 @@
             text-align: center;
             display: none;
         }
-        
+
         .difficulty-levels h2 {
             font-size: 32px;
             color: var(--primary-color);
             margin-bottom: 30px;
         }
-        
+
         .difficulty-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
-        
+
         .difficulty-card {
             padding: 30px 20px;
             border-radius: 10px;
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
         .difficulty-card.easy {
             background-color: rgba(76, 175, 80, 0.1);
             border: 2px solid var(--easy-color);
         }
-        
+
         .difficulty-card.medium {
             background-color: rgba(255, 152, 0, 0.1);
             border: 2px solid var(--medium-color);
         }
-        
+
         .difficulty-card.hard {
             background-color: rgba(244, 67, 54, 0.1);
             border: 2px solid var(--hard-color);
         }
-        
+
         .difficulty-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .difficulty-icon {
             font-size: 40px;
             margin-bottom: 15px;
         }
-        
+
         .difficulty-card.easy .difficulty-icon {
             color: var(--easy-color);
         }
-        
+
         .difficulty-card.medium .difficulty-icon {
             color: var(--medium-color);
         }
-        
+
         .difficulty-card.hard .difficulty-icon {
             color: var(--hard-color);
         }
-        
+
         .difficulty-card h3 {
             font-size: 22px;
             margin-bottom: 10px;
         }
-        
+
         .difficulty-card.easy h3 {
             color: var(--easy-color);
         }
-        
+
         .difficulty-card.medium h3 {
             color: var(--medium-color);
         }
-        
+
         .difficulty-card.hard h3 {
             color: var(--hard-color);
         }
-        
+
         .difficulty-card p {
             color: #666;
             margin-bottom: 15px;
         }
-        
+
         .start-quiz-btn {
             display: inline-block;
             margin-top: 15px;
@@ -317,47 +317,47 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .difficulty-card.easy .start-quiz-btn {
             background-color: var(--easy-color);
             color: white;
         }
-        
+
         .difficulty-card.medium .start-quiz-btn {
             background-color: var(--medium-color);
             color: white;
         }
-        
+
         .difficulty-card.hard .start-quiz-btn {
             background-color: var(--hard-color);
             color: white;
         }
-        
+
         .start-quiz-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         footer {
             background-color: var(--dark-color);
             color: white;
             padding: 15px 0 5px;
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 10px;
             margin-bottom: 10px;
         }
-        
+
         .footer-column h3 {
             font-size: 14px;
             margin-bottom: 8px;
             position: relative;
             padding-bottom: 3px;
         }
-        
+
         .footer-column h3::after {
             content: '';
             position: absolute;
@@ -367,35 +367,35 @@
             height: 1px;
             background-color: var(--accent-color);
         }
-        
+
         .footer-links {
             list-style: none;
             padding-left: 0;
         }
-        
+
         .footer-links li {
             margin-bottom: 3px;
         }
-        
+
         .footer-links a {
             color: #aaa;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 12px;
         }
-        
+
         .social-links {
             display: flex;
             gap: 5px;
             margin-top: 8px;
         }
-        
+
         .social-links a {
             width: 25px;
             height: 25px;
             font-size: 12px;
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 8px;
@@ -403,20 +403,20 @@
             color: #aaa;
             font-size: 11px;
         }
-        
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
+
             .quiz-header h1 {
                 font-size: 32px;
             }
-            
-            .language-grid {
+
+            .concept-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .difficulty-grid {
                 grid-template-columns: 1fr;
             }
@@ -436,7 +436,6 @@
                     <li><a href="homepage.html#categories">Categories</a></li>
                     <li><a href="homepage.html#features">Features</a></li>
                     <li><a href="homepage.html#testimonials">Testimonials</a></li>
-                    
                 </ul>
             </nav>
         </div>
@@ -447,263 +446,346 @@
             <i class="fas fa-arrow-left"></i>
             Back to Categories
         </a>
-        
-        <div class="quiz-header">
-            <h1>Web Development Quizzes</h1>
-            <p>Test your knowledge of web development technologies and frameworks. Select a language to begin your quiz journey.</p>
-        </div>
-        
-        <div class="language-grid">
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fab fa-html5"></i>
-                </div>
-                <h3>HTML</h3>
-                <p>The standard markup language for documents designed to be displayed in a web browser.</p>
-                <a href="#html-quiz" class="btn">Select HTML</a>
-            </div>
-            
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fab fa-css3-alt"></i>
-                </div>
-                <h3>CSS</h3>
-                <p>Style sheet language used for describing the presentation of a document written in HTML.</p>
-                <a href="#css-quiz" class="btn">Select CSS</a>
-            </div>
-            
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fab fa-js"></i>
-                </div>
-                <h3>JavaScript</h3>
-                <p>Programming language that conforms to the ECMAScript specification for web interactivity.</p>
-                <a href="#js-quiz" class="btn">Select JavaScript</a>
-            </div>
-            
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fab fa-react"></i>
-                </div>
-                <h3>React</h3>
-                <p>JavaScript library for building user interfaces, maintained by Facebook and developers.</p>
-                <a href="#react-quiz" class="btn">Select React</a>
-            </div>
-            
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fab fa-angular"></i>
-                </div>
-                <h3>Angular</h3>
-                <p>TypeScript-based open-source web application framework led by Google.</p>
-                <a href="#angular-quiz" class="btn">Select Angular</a>
-            </div>
-            
-            <div class="language-card">
-                <div class="language-icon">
-                    <i class="fab fa-node-js"></i>
-                </div>
-                <h3>Node.js</h3>
-                <p>JavaScript runtime built on Chrome's V8 JavaScript engine for server-side programming.</p>
-                <a href="#node-quiz" class="btn">Select Node.js</a>
-            </div>
-        </div>
-        
-        <!-- HTML Quiz Difficulty Levels -->
-        <div id="html-quiz" class="difficulty-levels">
-            <h2>HTML Quiz - Select Difficulty</h2>
-            <div class="difficulty-grid">
-                <div class="difficulty-card easy">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Easy</h3>
-                    <p>Basic HTML elements, tags, and attributes. Perfect for beginners.</p>
-                    <a href="html_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card medium">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <h3>Medium</h3>
-                    <p>Forms, semantic HTML, and accessibility. For intermediate developers.</p>
-                    <a href="html_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
-                </div>
-                
-                <div class="difficulty-card hard">
-                    <div class="difficulty-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>Hard</h3>
-                    <p>Advanced concepts like web components and performance optimization.</p>
-                    <a href="html_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
 
+        <div class="quiz-header">
+            <h1>Data Structures in C</h1>
+            <p>Test your knowledge of fundamental data structures implemented in C. Select a topic to begin your quiz journey.</p>
+        </div>
+
+        <div class="concept-grid">
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-sitemap"></i>
                 </div>
+                <h3>Arrays</h3>
+                <p>Static and dynamic arrays, operations, and applications.</p>
+                <a href="#arrays-quiz" class="btn">Select Arrays</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h3>Linked Lists</h3>
+                <p>Singly, doubly, and circular linked lists in C.</p>
+                <a href="#linkedlists-quiz" class="btn">Select Linked Lists</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3>Stacks</h3>
+                <p>Stack implementation and applications in C.</p>
+                <a href="#stacks-quiz" class="btn">Select Stacks</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-stream"></i>
+                </div>
+                <h3>Queues</h3>
+                <p>Queue implementations including circular queues.</p>
+                <a href="#queues-quiz" class="btn">Select Queues</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>Trees</h3>
+                <p>Binary trees, BSTs, and traversal algorithms.</p>
+                <a href="#trees-quiz" class="btn">Select Trees</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Graphs</h3>
+                <p>Graph representations and traversal algorithms.</p>
+                <a href="#graphs-quiz" class="btn">Select Graphs</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Searching</h3>
+                <p>Linear and binary search algorithms.</p>
+                <a href="#searching-quiz" class="btn">Select Searching</a>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-icon">
+                    <i class="fas fa-sort-amount-down"></i>
+                </div>
+                <h3>Sorting</h3>
+                <p>Bubble, merge, quick, and other sorting algorithms.</p>
+                <a href="#sorting-quiz" class="btn">Select Sorting</a>
             </div>
         </div>
-        
-        <!-- CSS Quiz Difficulty Levels -->
-        <div id="css-quiz" class="difficulty-levels">
-            <h2>CSS Quiz - Select Difficulty</h2>
+
+        <!-- Arrays Quiz Difficulty Levels -->
+        <div id="arrays-quiz" class="difficulty-levels">
+            <h2>Arrays Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic selectors, properties, and values. Great for CSS beginners.</p>
-                    <a href="css_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Basic array operations and simple problems.</p>
+                    <a href="ds_arrays(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card medium">
                     <div class="difficulty-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>Flexbox, Grid, and responsive design principles.</p>
-                    <a href="css_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Multi-dimensional arrays and matrix operations.</p>
+                    <a href="ds_arrays(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card hard">
                     <div class="difficulty-icon">
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Advanced animations, transforms, and CSS architecture.</p>
-                    <a href="css_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Dynamic memory allocation and advanced array problems.</p>
+                    <a href="ds_arrays(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
-        
-        <!-- JavaScript Quiz Difficulty Levels -->
-        <div id="js-quiz" class="difficulty-levels">
-            <h2>JavaScript Quiz - Select Difficulty</h2>
+
+        <!-- Linked Lists Quiz Difficulty Levels -->
+        <div id="linkedlists-quiz" class="difficulty-levels">
+            <h2>Linked Lists Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic syntax, variables, and simple functions.</p>
-                    <a href="javascript_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Singly linked list basic operations.</p>
+                    <a href="ds_linkedlists(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card medium">
                     <div class="difficulty-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>DOM manipulation, events, and ES6 features.</p>
-                    <a href="javasript_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Doubly and circular linked lists.</p>
+                    <a href="ds_linkedlists(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card hard">
                     <div class="difficulty-icon">
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Closures, prototypes, promises, and advanced patterns.</p>
-                    <a href="javascript_webdevlop(hard).htmll" class="start-quiz-btn">Start Quiz</a>
+                    <p>Complex linked list problems and optimizations.</p>
+                    <a href="ds_linkedlists(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
-        
-        <!-- React Quiz Difficulty Levels -->
-        <div id="react-quiz" class="difficulty-levels">
-            <h2>React Quiz - Select Difficulty</h2>
+
+        <!-- Stacks Quiz Difficulty Levels -->
+        <div id="stacks-quiz" class="difficulty-levels">
+            <h2>Stacks Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic components, props, and state management.</p>
-                    <a href="react_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Stack operations using arrays.</p>
+                    <a href="ds_stacks(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card medium">
                     <div class="difficulty-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>Hooks, context API, and component lifecycle.</p>
-                    <a href="react_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Stack applications and linked list implementation.</p>
+                    <a href="ds_stacks(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card hard">
                     <div class="difficulty-icon">
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Advanced state management, performance optimization, and custom hooks.</p>
-                    <a href="react_webdevlop(hard).htmll" class="start-quiz-btn">Start Quiz</a>
+                    <p>Complex stack problems and algorithm design.</p>
+                    <a href="ds_stacks(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
-        
-        <!-- Angular Quiz Difficulty Levels -->
-        <div id="angular-quiz" class="difficulty-levels">
-            <h2>Angular Quiz - Select Difficulty</h2>
+
+        <!-- Queues Quiz Difficulty Levels -->
+        <div id="queues-quiz" class="difficulty-levels">
+            <h2>Queues Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic components, directives, and data binding.</p>
-                    <a href="angular_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Basic queue operations using arrays.</p>
+                    <a href="ds_queues(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card medium">
                     <div class="difficulty-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>Services, dependency injection, and routing.</p>
-                    <a href="angular_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Circular queues and linked list implementation.</p>
+                    <a href="ds_queues(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card hard">
                     <div class="difficulty-icon">
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Advanced RxJS, state management, and performance optimization.</p>
-                    <a href="angular_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Priority queues and advanced applications.</p>
+                    <a href="ds_queues(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
-        
-        <!-- Node.js Quiz Difficulty Levels -->
-        <div id="node-quiz" class="difficulty-levels">
-            <h2>Node.js Quiz - Select Difficulty</h2>
+
+        <!-- Trees Quiz Difficulty Levels -->
+        <div id="trees-quiz" class="difficulty-levels">
+            <h2>Trees Quiz - Select Difficulty</h2>
             <div class="difficulty-grid">
                 <div class="difficulty-card easy">
                     <div class="difficulty-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
                     <h3>Easy</h3>
-                    <p>Basic Node.js concepts, modules, and file system operations.</p>
-                    <a href="node_webdevlop(easy).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Binary tree basics and traversals.</p>
+                    <a href="ds_trees(easy).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card medium">
                     <div class="difficulty-icon">
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Medium</h3>
-                    <p>Express.js, middleware, and basic API development.</p>
-                    <a href="node_webdevlop(medium).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>Binary Search Trees and operations.</p>
+                    <a href="ds_trees(medium).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
-                
+
                 <div class="difficulty-card hard">
                     <div class="difficulty-icon">
                         <i class="fas fa-fire"></i>
                     </div>
                     <h3>Hard</h3>
-                    <p>Advanced authentication, database integration, and performance tuning.</p>
-                    <a href="node_webdevlop(hard).html" class="start-quiz-btn">Start Quiz</a>
+                    <p>AVL trees, Red-Black trees, and complex problems.</p>
+                    <a href="ds_trees(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphs Quiz Difficulty Levels -->
+        <div id="graphs-quiz" class="difficulty-levels">
+            <h2>Graphs Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Graph representations and basic concepts.</p>
+                    <a href="ds_graphs(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>DFS, BFS, and simple graph algorithms.</p>
+                    <a href="ds_graphs(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Shortest path, MST, and complex graph problems.</p>
+                    <a href="ds_graphs(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Searching Quiz Difficulty Levels -->
+        <div id="searching-quiz" class="difficulty-levels">
+            <h2>Searching Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Linear and binary search basics.</p>
+                    <a href="ds_searching(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Searching in rotated arrays and matrices.</p>
+                    <a href="ds_searching(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Advanced searching techniques and optimizations.</p>
+                    <a href="ds_searching(hard).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sorting Quiz Difficulty Levels -->
+        <div id="sorting-quiz" class="difficulty-levels">
+            <h2>Sorting Quiz - Select Difficulty</h2>
+            <div class="difficulty-grid">
+                <div class="difficulty-card easy">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Easy</h3>
+                    <p>Bubble, selection, and insertion sort.</p>
+                    <a href="ds_sorting(easy).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card medium">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Medium</h3>
+                    <p>Merge sort and quick sort implementations.</p>
+                    <a href="ds_sorting(medium).html" class="start-quiz-btn">Start Quiz</a>
+                </div>
+
+                <div class="difficulty-card hard">
+                    <div class="difficulty-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Hard</h3>
+                    <p>Heap sort, radix sort, and advanced techniques.</p>
+                    <a href="ds_sorting(hard).html" class="start-quiz-btn">Start Quiz</a>
                 </div>
             </div>
         </div>
@@ -733,14 +815,16 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Web Development</h3>
+                    <h3>Data Structures</h3>
                     <ul class="footer-links">
-                        <li><a href="#html-quiz">HTML Quizzes</a></li>
-                        <li><a href="#css-quiz">CSS Quizzes</a></li>
-                        <li><a href="#js-quiz">JavaScript Quizzes</a></li>
-                        <li><a href="#react-quiz">React Quizzes</a></li>
-                        <li><a href="#angular-quiz">Angular Quizzes</a></li>
-                        <li><a href="#node-quiz">Node.js Quizzes</a></li>
+                        <li><a href="#arrays-quiz">Arrays Quizzes</a></li>
+                        <li><a href="#linkedlists-quiz">Linked Lists Quizzes</a></li>
+                        <li><a href="#stacks-quiz">Stacks Quizzes</a></li>
+                        <li><a href="#queues-quiz">Queues Quizzes</a></li>
+                        <li><a href="#trees-quiz">Trees Quizzes</a></li>
+                        <li><a href="#graphs-quiz">Graphs Quizzes</a></li>
+                        <li><a href="#searching-quiz">Searching Quizzes</a></li>
+                        <li><a href="#sorting-quiz">Sorting Quizzes</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -763,13 +847,13 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-        
+
         // Show only the selected quiz difficulty section
         document.addEventListener('DOMContentLoaded', function() {
             // Hide all difficulty sections initially
@@ -777,29 +861,29 @@
             difficultySections.forEach(section => {
                 section.style.display = 'none';
             });
-            
-            // Show section when language is selected
-            const languageLinks = document.querySelectorAll('.language-card a');
-            languageLinks.forEach(link => {
+
+            // Show section when concept is selected
+            const conceptLinks = document.querySelectorAll('.concept-card a');
+            conceptLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    
+
                     // Hide all sections
                     difficultySections.forEach(section => {
                         section.style.display = 'none';
                     });
-                    
+
                     // Show selected section
                     document.querySelector(targetId).style.display = 'block';
-                    
+
                     // Scroll to the section
                     document.querySelector(targetId).scrollIntoView({
                         behavior: 'smooth'
                     });
                 });
             });
-            
+
             // If URL has hash, show that section
             if(window.location.hash) {
                 const targetSection = document.querySelector(window.location.hash);
@@ -811,34 +895,34 @@
                 }
             }
         });
-        
+
         // Animation on scroll
         window.addEventListener('scroll', revealOnScroll);
-        
+
         function revealOnScroll() {
-            const elements = document.querySelectorAll('.language-card');
+            const elements = document.querySelectorAll('.concept-card');
             const windowHeight = window.innerHeight;
-            
+
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementPosition < windowHeight - elementVisible) {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
                 }
             });
         }
-        
+
         // Initialize elements with opacity 0 for animation
         document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.language-card');
+            const elements = document.querySelectorAll('.concept-card');
             elements.forEach(element => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(20px)';
                 element.style.transition = 'all 0.6s ease';
             });
-            
+
             // Trigger the animation after a small delay
             setTimeout(revealOnScroll, 100);
         });

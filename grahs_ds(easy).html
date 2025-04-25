@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs Quiz | QuizMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* (Same CSS as provided) */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>QuizMaster</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="homepage.html#categories">Categories</a></li>
+                    <li><a href="homepage.html#features">Features</a></li>
+                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="datastructurespage.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Data Structures Quizzes
+        </a>
+
+        <div class="quiz-header">
+            <div class="difficulty-badge easy-badge">Easy Level</div>
+            <h1>Graphs Quiz</h1>
+            <p>Test your knowledge of graphs with these easy-level questions</p>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-progress">
+                <span class="question-count">Question 1 of 20</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 5%"></div>
+                </div>
+                <span class="score">Score: 0%</span>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">
+                    <span class="question-number">1.</span>
+                    <span class="question">What is a graph?</span>
+                </div>
+
+                <div class="options-container">
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">A</span>
+                        <span class="option-text">A data structure that stores elements in a linear order</span>
+                    </div>
+                    <div class="option" data-correct="true">
+                        <span class="option-letter">B</span>
+                        <span class="option-text">A collection of nodes and edges</span>
+                    </div>
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">C</span>
+                        <span class="option-text">A data structure that stores key-value pairs</span>
+                    </div>
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">D</span>
+                        <span class="option-text">A data structure that stores elements in a sorted order</span>
+                    </div>
+                </div>
+
+                <div class="feedback correct-feedback">
+                    ✅ Correct! A graph is a collection of nodes and edges.
+                </div>
+
+                <div class="feedback incorrect-feedback">
+                    ❌ Incorrect! The correct answer is B) A collection of nodes and edges.
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <button class="btn next-btn">Next Question</button>
+            </div>
+        </div>
+
+        <div class="quiz-container result-container">
+            <div class="result-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2>Quiz Completed!</h2>
+            <div class="score-text">Your Score:</div>
+            <div class="score-value">0%</div>
+            <p>You answered <span class="correct-answers">0</span> out of <span class="total-questions">20</span> questions correctly</p>
+
+            <div class="quiz-footer" style="justify-content: center;">
+                <button id="try-again-btn" class="btn" style="margin-right: 15px;">
+                    <i class="fas fa-redo"></i> Try Again
+                </button>
+                <a href="datastructurespage.html" class="btn">
+                    <i class="fas fa-list"></i> Back to Quizzes
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>QuizMaster</h3>
+                    <p>The ultimate platform for knowledge testing and learning through fun, interactive quizzes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#categories">Categories</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#testimonials">Testimonials</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Data Structures</h3>
+                    <ul class="footer-links">
+                        <li><a href="stacks-medium-quiz.html">Stacks Quizzes</a></li>
+                        <li><a href="arrays-medium-quiz.html">Arrays Quizzes</a></li>
+                        <li><a href="linkedlists-medium-quiz.html">Linked Lists Quizzes</a></li>
+                        <li><a href="queues-medium-quiz.html">Queues Quizzes</a></li>
+                        <li><a href="trees-medium-quiz.html">Trees Quizzes</a></li>
+                        <li><a href="graphs-medium-quiz.html">Graphs Quizzes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@quizmaster.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Quiz Street, Knowledge City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 QuizMaster. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Graphs quiz questions data
+        const questions = [
+            {
+                question: "What is a graph?",
+                options: [
+                    "A data structure that stores elements in a linear order",
+                    "A collection of nodes and edges",
+                    "A data structure that stores key-value pairs",
+                    "A data structure that stores elements in a sorted order"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A graph is a collection of nodes and edges."
+            },
+            {
+                question: "What are the nodes in a graph called?",
+                options: [
+                    "Edges",
+                    "Vertices",
+                    "Links",
+                    "Arcs"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The nodes in a graph are called vertices."
+            },
+            {
+                question: "What are the connections between nodes in a graph called?",
+                options: [
+                    "Vertices",
+                    "Edges",
+                    "Links",
+                    "Arcs"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The connections between nodes in a graph are called edges."
+            },
+            {
+                question: "What is a directed graph?",
+                options: [
+                    "A graph where edges have no direction",
+                    "A graph where edges have a direction",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A directed graph is a graph where edges have a direction."
+            },
+            {
+                question: "What is an undirected graph?",
+                options: [
+                    "A graph where edges have no direction",
+                    "A graph where edges have a direction",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! An undirected graph is a graph where edges have no direction."
+            },
+            {
+                question: "What is a weighted graph?",
+                options: [
+                    "A graph where edges have no weight",
+                    "A graph where edges have a weight",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A weighted graph is a graph where edges have a weight."
+            },
+            {
+                question: "What is an unweighted graph?",
+                options: [
+                    "A graph where edges have no weight",
+                    "A graph where edges have a weight",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! An unweighted graph is a graph where edges have no weight."
+            },
+            {
+                question: "What is the degree of a vertex in a graph?",
+                options: [
+                    "The number of edges connected to the vertex",
+                    "The weight of the vertex",
+                    "The number of vertices in the graph",
+                    "The direction of the vertex"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! The degree of a vertex in a graph is the number of edges connected to the vertex."
+            },
+            {
+                question: "What is a cycle in a graph?",
+                options: [
+                    "A path that visits each vertex exactly once",
+                    "A path that starts and ends at the same vertex",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! A cycle in a graph is a path that starts and ends at the same vertex."
+            },
+            {
+                question: "What is a tree?",
+                options: [
+                    "A graph with no edges",
+                    "A graph with cycles",
+                    "A connected acyclic graph",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! A tree is a connected acyclic graph."
+            },
+            {
+                question: "What is a forest?",
+                options: [
+                    "A collection of trees",
+                    "A graph with cycles",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A forest is a collection of trees."
+            },
+            {
+                question: "What is a path in a graph?",
+                options: [
+                    "A sequence of edges that connects a sequence of vertices",
+                    "A graph with no edges",
+                    "A graph with cycles",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A path in a graph is a sequence of edges that connects a sequence of vertices."
+            },
+            {
+                question: "What is the shortest path in a graph?",
+                options: [
+                    "The path with the least number of edges",
+                    "The path with the highest weight",
+                    "The path with the least total weight",
+                    "The path with the most vertices"
+                ],
+                correctAnswer: 2,
+                explanation: "✅ Correct! The shortest path in a graph is the path with the least total weight."
+            },
+            {
+                question: "What is a connected graph?",
+                options: [
+                    "A graph where there is a path between every pair of vertices",
+                    "A graph with no edges",
+                    "A graph with cycles",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A connected graph is a graph where there is a path between every pair of vertices."
+            },
+            {
+                question: "What is a disconnected graph?",
+                options: [
+                    "A graph where there is no path between some pairs of vertices",
+                    "A graph with no edges",
+                    "A graph with cycles",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! A disconnected graph is a graph where there is no path between some pairs of vertices."
+            },
+            {
+                question: "What is an adjacency matrix?",
+                options: [
+                    "A matrix that represents the edges of a graph",
+                    "A list that represents the edges of a graph",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! An adjacency matrix is a matrix that represents the edges of a graph."
+            },
+            {
+                question: "What is an adjacency list?",
+                options: [
+                    "A matrix that represents the edges of a graph",
+                    "A list that represents the edges of a graph",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! An adjacency list is a list that represents the edges of a graph."
+            },
+            {
+                question: "What is depth-first search (DFS)?",
+                options: [
+                    "A search algorithm that explores as far as possible along each branch before backtracking",
+                    "A search algorithm that explores all neighbors at the present depth before moving on to nodes at the next depth level",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! Depth-first search (DFS) is a search algorithm that explores as far as possible along each branch before backtracking."
+            },
+            {
+                question: "What is breadth-first search (BFS)?",
+                options: [
+                    "A search algorithm that explores as far as possible along each branch before backtracking",
+                    "A search algorithm that explores all neighbors at the present depth before moving on to nodes at the next depth level",
+                    "A graph with no edges",
+                    "A graph with only one node"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! Breadth-first search (BFS) is a search algorithm that explores all neighbors at the present depth before moving on to nodes at the next depth level."
+            },
+            {
+                question: "What is Dijkstra's algorithm used for?",
+                options: [
+                    "Finding the shortest path in a weighted graph",
+                    "Finding the longest path in a graph",
+                    "Finding cycles in a graph",
+                    "Finding the degree of a vertex"
+                ],
+                correctAnswer: 0,
+                explanation: "✅ Correct! Dijkstra's algorithm is used for finding the shortest path in a weighted graph."
+            },
+            {
+                question: "What is the time complexity of Dijkstra's algorithm?",
+                options: [
+                    "O(V^2)",
+                    "O(E log V)",
+                    "O(V + E)",
+                    "O(1)"
+                ],
+                correctAnswer: 1,
+                explanation: "✅ Correct! The time complexity of Dijkstra's algorithm is O(E log V), where E is the number of edges and V is the number of vertices."
+            }
+        ];
+
+        // DOM elements
+        const quizContainer = document.querySelector('.quiz-container');
+        const resultContainer = document.querySelector('.result-container');
+        const questionElement = document.querySelector('.question');
+        const optionsContainer = document.querySelector('.options-container');
+        const questionNumberElement = document.querySelector('.question-number');
+        const questionCountElement = document.querySelector('.question-count');
+        const progressFillElement = document.querySelector('.progress-fill');
+        const scoreElement = document.querySelector('.score');
+        const nextButton = document.querySelector('.next-btn');
+        const correctFeedback = document.querySelector('.correct-feedback');
+        const incorrectFeedback = document.querySelector('.incorrect-feedback');
+        const resultScoreElement = document.querySelector('.score-value');
+        const correctAnswersElement = document.querySelector('.correct-answers');
+        const totalQuestionsElement = document.querySelector('.total-questions');
+        const tryAgainBtn = document.getElementById('try-again-btn');
+
+        // Quiz state
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        // Initialize quiz
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.innerHTML = currentQuestion.question;
+            questionNumberElement.textContent = currentQuestionIndex + 1;
+            questionCountElement.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+            progressFillElement.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.dataset.correct = index === currentQuestion.correctAnswer;
+                optionElement.innerHTML = `
+                    <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+                    <span class="option-text">${option}</span>
+                `;
+                optionElement.addEventListener('click', selectOption);
+                optionsContainer.appendChild(optionElement);
+            });
+
+            correctFeedback.textContent = currentQuestion.explanation;
+            incorrectFeedback.textContent = currentQuestion.explanation.replace('✅', '❌ Incorrect!');
+
+            // Hide feedback and reset next button
+            correctFeedback.style.display = 'none';
+            incorrectFeedback.style.display = 'none';
+            nextButton.textContent = currentQuestionIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question';
+        }
+
+        // Handle option selection
+        function selectOption(e) {
+            const selectedOptionElement = e.currentTarget;
+
+            // If already selected, do nothing
+            if (selectedOptionElement.classList.contains('selected')) return;
+
+            // Remove selection from other options
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            // Select current option
+            selectedOptionElement.classList.add('selected');
+            selectedOption = selectedOptionElement;
+
+            // Show feedback
+            const isCorrect = selectedOptionElement.dataset.correct === 'true';
+            if (isCorrect) {
+                correctFeedback.style.display = 'block';
+                incorrectFeedback.style.display = 'none';
+            } else {
+                correctFeedback.style.display = 'none';
+                incorrectFeedback.style.display = 'block';
+            }
+        }
+
+        // Handle next button click
+        nextButton.addEventListener('click', () => {
+            if (!selectedOption) return;
+
+            // Check answer and update score
+            const isCorrect = selectedOption.dataset.correct === 'true';
+            if (isCorrect) {
+                score++;
+                scoreElement.textContent = `Score: ${Math.round((score / questions.length) * 100)}%`;
+            }
+
+            // Mark selected option as correct/incorrect
+            selectedOption.classList.remove('selected');
+            selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            // Show correct answer if wrong
+            if (!isCorrect) {
+                document.querySelectorAll('.option').forEach(option => {
+                    if (option.dataset.correct === 'true') {
+                        option.classList.add('correct');
+                    }
+                });
+            }
+
+            // Disable all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+
+            // Prepare for next question or show results
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    selectedOption = null;
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }, 1500);
+        });
+
+        // Show quiz results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+
+            const percentage = Math.round((score / questions.length) * 100);
+            resultScoreElement.textContent = `${percentage}%`;
+            correctAnswersElement.textContent = score;
+            totalQuestionsElement.textContent = questions.length;
+        }
+
+        // Reset quiz to initial state
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedOption = null;
+
+            // Reset UI elements
+            scoreElement.textContent = "Score: 0%";
+            resultContainer.style.display = 'none';
+            quizContainer.style.display = 'block';
+
+            // Reload first question
+            loadQuestion();
+        }
+
+        // Add event listener for try again button
+        tryAgainBtn.addEventListener('click', resetQuiz);
+
+        // Start the quiz
+        loadQuestion();
+    </script>
+</body>
+</html>

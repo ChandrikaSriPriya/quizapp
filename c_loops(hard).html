@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeMaster - Interactive HTML Practice</title>
+  <title>C Programming Practice</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -46,52 +46,52 @@
       padding: 20px 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    
+
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    
+
     .logo {
       font-size: 28px;
       font-weight: 700;
       display: flex;
       align-items: center;
     }
-    
+
     .logo i {
       margin-right: 10px;
       color: var(--accent-color);
     }
-    
+
     .user-profile {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-        
-    
-.avatar {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -486,33 +486,133 @@
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 20px 0 10px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.footer-column h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 5px;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.social-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.social-links a {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.social-links a i {
+  position: relative;
+  z-index: 1;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover::before {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  font-size: 12px;
+}
   </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-brain"></i>
-                    <span>QuizMaster</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="homepage.html">Home</a></li>
-                    <li><a href="homepage.html#categories">Categories</a></li>
-                    <li><a href="homepage.html#features">Features</a></li>
-                    <li><a href="homepage.html#testimonials">Testimonials</a></li>
-                    
-            </nav>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-brain"></i>
+          <span>C Programming Master</span>
         </div>
-    </header>
+        <ul class="nav-links">
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="homepage.html#categories">Categories</a></li>
+          <li><a href="homepage.html#features">Features</a></li>
+          <li><a href="homepage.html#testimonials">Testimonials</a></li>
+      </ul>
+      </nav>
+    </div>
+  </header>
 
   <div class="container">
     <div class="quiz-container" id="questionBox">
       <div class="quiz-header">
         <div class="question-info">
           <span class="question-counter">Question 1 of 5</span>
-          <h2 id="questionTitle">Create a Responsive Navigation Bar</h2>
+          <h2 id="questionTitle">print 1 to 10 using for loop</h2>
           <p id="questionText"></p>
         </div>
         <div class="timer-container" id="timerContainer">
@@ -528,10 +628,10 @@
             <div class="editor-dot yellow"></div>
             <div class="editor-dot green"></div>
           </div>
-          <div class="editor-title">index.html</div>
+          <div class="editor-title">main.c</div>
         </div>
         <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15</div>
-        <textarea id="javaCode" placeholder="<!-- Write your HTML code here -->" spellcheck="false"></textarea>
+        <textarea id="cCode" placeholder="// Write your C code here" spellcheck="false"></textarea>
       </div>
 
       <div class="btn-container">
@@ -565,7 +665,7 @@
       <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
-      <p id="completionText">Congratulations on finishing all the HTML practice questions. You're one step closer to mastering HTML!</p>
+      <p id="completionText">Congratulations on finishing all the C programming practice questions. You're one step closer to mastering C!</p>
 
       <div class="badge-container" id="badgeContainer">
         <!-- Badges will be added here dynamically -->
@@ -573,156 +673,186 @@
 
       <div class="btn-container">
         <button class="btn" onclick="location.reload()"><i class="fas fa-redo"></i> Try Again</button>
-        <a href="certificationpage.html" class="btn btn-certificate"><i class="fas fa-certificate"></i> Claim Certificate</a>
+        <a href="certificate_cprogramming.html" class="btn btn-certificate"><i class="fas fa-certificate"></i> Claim Certificate</a>
       </div>
     </div>
   </div>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>C Programming Master</h3>
+          <p>The ultimate platform for learning C programming through fun, interactive quizzes.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="homepage.html#categories">Categories</a></li>
+            <li><a href="homepage.html#features">Features</a></li>
+            <li><a href="homepage.html#testimonials">Testimonials</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="webdevloppage.html">Web Development</a></li>
+            <li><a href="androiddevloppage.html">Android Development</a></li>
+            <li><a href="datascienceandaipage.html">Data Science and AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-envelope"></i> team5@gmail.com</li>
+            <li><i class="fas fa-phone"></i> 8019933268</li>
+            <li><i class="fas fa-map-marker-alt"></i> Hyderabad, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 C Programming Master. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
 
   <script>
-  // HTML questions with difficulty levels and categories
-  const questions = [
-    {
-      title: "Create a Responsive Navigation Bar",
-      description: "Create a responsive navigation bar with a hamburger menu for mobile devices. Include a logo, menu items, and a mobile menu toggle button.",
-      answer: `<nav class="navbar">
-  <div class="logo">
-    <a href="#">Logo</a>
-  </div>
-  <button class="mobile-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</nav>`,
-      hint: "Use flexbox for layout and media queries for responsiveness. The mobile menu should be hidden on small screens.",
-      difficulty: "hard",
-      category: "Navigation"
-    },
-    {
-      title: "Create a Form with Validation",
-      description: "Create a registration form with client-side validation for email, password, and phone number fields.",
-      answer: `<form class="registration-form" novalidate>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-    <span class="error-message"></span>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" id="password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-    <span class="error-message"></span>
-  </div>
-  <div class="form-group">
-    <label for="phone">Phone</label>
-    <input type="tel" id="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-    <span class="error-message"></span>
-  </div>
-  <button type="submit">Register</button>
-</form>`,
-      hint: "Use HTML5 validation attributes like required, pattern, and minlength. Add custom validation messages.",
-      difficulty: "hard",
-      category: "Forms"
-    },
-    {
-      title: "Create a Modal Dialog",
-      description: "Create a modal dialog that can be opened and closed with buttons. Include a backdrop and animation.",
-      answer: `<div class="modal-container">
-  <button class="open-modal">Open Modal</button>
-  <div class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Modal Title</h2>
-        <button class="close-modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Modal content goes here...</p>
-      </div>
-      <div class="modal-footer">
-        <button class="close-modal">Close</button>
-        <button class="save">Save</button>
-      </div>
-    </div>
-  </div>
-</div>`,
-      hint: "Use a container for the modal and backdrop. Position the modal in the center of the screen.",
-      difficulty: "hard",
-      category: "Modals"
-    },
-    {
-      title: "Create a Data Table",
-      description: "Create a responsive data table with sorting, filtering, and pagination functionality.",
-      answer: `<div class="table-container">
-  <div class="table-controls">
-    <input type="text" class="search" placeholder="Search...">
-    <select class="filter">
-      <option value="">All</option>
-      <option value="active">Active</option>
-      <option value="inactive">Inactive</option>
-    </select>
-  </div>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th data-sort="name">Name <span class="sort-icon"></span></th>
-        <th data-sort="email">Email <span class="sort-icon"></span></th>
-        <th data-sort="status">Status <span class="sort-icon"></span></th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Table rows will be dynamically added -->
-    </tbody>
-  </table>
-  <div class="pagination">
-    <button class="prev">Previous</button>
-    <span class="page-info">Page 1 of 1</span>
-    <button class="next">Next</button>
-  </div>
-</div>`,
-      hint: "Use data attributes for sorting. Include controls for search, filter, and pagination.",
-      difficulty: "hard",
-      category: "Tables"
-    },
-    {
-      title: "Create a File Upload Interface",
-      description: "Create a drag-and-drop file upload interface with progress bar and file preview.",
-      answer: `<div class="upload-container">
-  <div class="upload-area" id="dropZone">
-    <input type="file" id="fileInput" multiple hidden>
-    <div class="upload-content">
-      <i class="fas fa-cloud-upload-alt"></i>
-      <p>Drag & Drop files here or <button class="browse">Browse</button></p>
-      <span class="file-types">Supported files: JPG, PNG, PDF</span>
-    </div>
-  </div>
-  <div class="file-list">
-    <div class="file-item">
-      <div class="file-info">
-        <span class="file-name">example.jpg</span>
-        <span class="file-size">2.5 MB</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 75%"></div>
-      </div>
-      <button class="remove-file">&times;</button>
-    </div>
-  </div>
-</div>`,
-      hint: "Use the HTML5 File API and drag-and-drop events. Include visual feedback for upload progress.",
-      difficulty: "hard",
-      category: "File Upload"
+    // C programming questions with difficulty levels and categories
+    const questions = [
+      {
+        title: "For Loop - Number Series",
+        description: "Write a C program that prints numbers from 1 to 10 using a for loop.",
+        answer: `#include <stdio.h>
+
+int main() {
+    int i;
+    for(i = 1; i <= 10; i++) {
+        printf("%d ", i);
     }
-  ];
-  
-  // Update the placeholder text in the editor to mention HTML
-  document.getElementById("javaCode").placeholder = "<!-- Write your HTML code here -->";
-  // User data and state
+    printf("\\n");
+    return 0;
+}`,
+        hint: "Use a for loop with initialization, condition, and increment.",
+        difficulty: "easy",
+        category: "For Loop"
+      },
+      {
+        title: "While Loop - Sum of Numbers",
+        description: "Write a C program that takes a number n as input and calculates the sum of numbers from 1 to n using a while loop.",
+        answer: `#include <stdio.h>
+
+int main() {
+    int n, sum = 0, i = 1;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    while(i <= n) {
+        sum += i;
+        i++;
+    }
+    printf("Sum: %d\\n", sum);
+    return 0;
+}`,
+        hint: "Initialize sum to 0 and use a while loop to add numbers.",
+        difficulty: "easy",
+        category: "While Loop"
+      },
+      {
+        title: "Do-While Loop - Menu Program",
+        description: "Write a C program that shows a menu until the user chooses to exit using a do-while loop.",
+        answer: `#include <stdio.h>
+
+int main() {
+    int choice;
+    do {
+        printf("\\nMenu:\\n");
+        printf("1. Option 1\\n");
+        printf("2. Option 2\\n");
+        printf("3. Exit\\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        
+        switch(choice) {
+            case 1:
+                printf("You chose Option 1\\n");
+                break;
+            case 2:
+                printf("You chose Option 2\\n");
+                break;
+            case 3:
+                printf("Exiting...\\n");
+                break;
+            default:
+                printf("Invalid choice\\n");
+        }
+    } while(choice != 3);
+    
+    return 0;
+}`,
+        hint: "Use do-while loop to show menu at least once.",
+        difficulty: "easy",
+        category: "Do-While Loop"
+      },
+      {
+        title: "Nested Loops - Pattern Printing",
+        description: "Write a C program that prints a right-angled triangle pattern using nested for loops.",
+        answer: `#include <stdio.h>
+
+int main() {
+    int i, j, rows;
+    printf("Enter number of rows: ");
+    scanf("%d", &rows);
+    
+    for(i = 1; i <= rows; i++) {
+        for(j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\\n");
+    }
+    return 0;
+}`,
+        hint: "Use outer loop for rows and inner loop for columns.",
+        difficulty: "easy",
+        category: "Nested Loops"
+      },
+      {
+        title: "Loop Control - Prime Numbers",
+        description: "Write a C program that prints all prime numbers between 1 and 100 using loops and break statement.",
+        answer: `#include <stdio.h>
+
+int main() {
+    int i, j;
+    printf("Prime numbers between 1 and 100:\\n");
+    
+    for(i = 2; i <= 100; i++) {
+        int isPrime = 1;
+        for(j = 2; j < i; j++) {
+            if(i % j == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+        if(isPrime) {
+            printf("%d ", i);
+        }
+    }
+    printf("\\n");
+    return 0;
+}`,
+        hint: "Use nested loops and break statement to check for prime numbers.",
+        difficulty: "easy",
+        category: "Loop Control"
+      }
+    ];
+
+    // User data and state
     let current = 0;
     let timer;
     let timeLeft = 180; // 3 minutes
@@ -767,7 +897,7 @@
       document.querySelector(".question-counter").textContent = `Question ${current + 1} of ${questions.length}`;
 
       // Set starter code with question as comment
-      document.getElementById("javaCode").value = `<!-- ${q.description} -->\n\n`;
+      document.getElementById("cCode").value = `// ${q.description}\n`;
 
       document.getElementById("result").textContent = "";
       document.getElementById("result").className = "";
@@ -828,7 +958,7 @@
 
     // Check user's code against solution
     function checkCode() {
-      const userCode = document.getElementById("javaCode").value.trim();
+      const userCode = document.getElementById("cCode").value.trim();
       const correctCode = questions[current].answer.trim();
       const resultBox = document.getElementById("result");
 
@@ -894,7 +1024,7 @@
       // Generate completion message based on performance
       let completionText = "";
       if (percentage === 100) {
-        completionText = `Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're an HTML expert!`;
+        completionText = `Perfect score! You completed all ${questions.length} questions in ${minutes}m ${seconds}s. You're a C programming expert!`;
       } else if (percentage >= 80) {
         completionText = `Great job! You answered ${score} out of ${questions.length} questions correctly in ${minutes}m ${seconds}s.`;
       } else if (percentage >= 60) {
